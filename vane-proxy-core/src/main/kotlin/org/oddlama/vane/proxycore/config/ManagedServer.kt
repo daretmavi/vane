@@ -20,7 +20,7 @@ class ManagedServer(
     displayName: String,
     onlineConfigSection: CommentedConfig?,
     offlineConfigSection: CommentedConfig?,
-    start: CommentedConfig
+    start: CommentedConfig?
 ) {
     /** Start behavior configuration for this server. */
     @JvmField
@@ -139,7 +139,7 @@ class ManagedServer(
         var encodedFavicon: String? = null
 
         init {
-            // [managedServers.my_server.state]
+            // [managedServers.MyServer.state]
             if (config != null) {
                 // quotes = ["", ...]
                 val quotesList = config.get<MutableList<String?>?>("quotes")
@@ -152,7 +152,7 @@ class ManagedServer(
                 }
 
                 // motd = "..."
-                val motdVal = config.get<Any?>("motd")
+                val motdVal = config.get<Any?>("MOTD")
 
                 require(motdVal == null || motdVal is String) { "Managed server '$id' has a non-string MOTD!" }
 
@@ -162,7 +162,7 @@ class ManagedServer(
                 )
 
                 // favicon = "..."
-                val faviconPath = config.get<Any?>("favicon")
+                val faviconPath = config.get<Any?>("Favicon")
 
                 require(faviconPath == null || faviconPath is String) { "Managed server '$id' has a non-string favicon path!" }
 
@@ -212,7 +212,7 @@ class ManagedServer(
      *
      * @constructor Parses start command settings and validation values.
      */
-    class ServerStart(id: String, displayName: String, config: CommentedConfig) {
+    class ServerStart(id: String, displayName: String, config: CommentedConfig?) {
         /** Command tokens used to start the backend process. */
         var cmd: Array<String?>?
 
@@ -227,10 +227,10 @@ class ManagedServer(
         var allowAnyone: Boolean = false
 
         init {
-            val cmdList = config.get<MutableList<String?>?>("cmd")
-            val timeoutVal = config.get<Any?>("timeout")
-            val kickMsgVal = config.get<Any?>("kickMsg")
-            val allowAnyoneVal = config.get<Any?>("allowAnyone")
+            val cmdList = config?.get<MutableList<String?>?>("CMD")
+            val timeoutVal = config?.get<Any?>("Timeout")
+            val kickMsgVal = config?.get<Any?>("KickMsg")
+            val allowAnyoneVal = config?.get<Any?>("AllowAnyone")
 
             cmd = cmdList?.map { it?.replace("{SERVER}", id) }?.toTypedArray()
 

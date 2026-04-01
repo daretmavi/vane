@@ -131,6 +131,6 @@ class AuthMultiplexer(context: Context<Core?>?) : Listener<Core?>(context), Plug
     /** Channel constants for auth multiplex messaging. */
     companion object {
         /** Plugin message channel used by vane proxy auth multiplexing. */
-        const val CHANNEL_AUTH_MULTIPLEX: String = "vane_proxy:auth_multiplex"
+        const val CHANNEL_AUTH_MULTIPLEX: String = "vane_proxy:AuthMultiplex"
     }
 }

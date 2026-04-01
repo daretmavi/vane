@@ -1,4 +1,4 @@
-[auth_multiplex]
+[AuthMultiplex]
 
 # Define your auth multiplexers
 # These allow the specified UUIDs to join the server
@@ -6,20 +6,20 @@
 
 # Example:
 #
-# [authMultiplex.ID_NUMBER]
-# port = 25566
-# allowedUuids = ["b4a6717f-e3ab-4348-8e18-022827ef3177"]
+# [AuthMultiplex.ID_NUMBER]
+# Port = 25566
+# AllowedUuids = ["b4a6717f-e3ab-4348-8e18-022827ef3177"]
 #
 # (Where ID_NUMBER is a nonzero integer)
 #
 # This will allow *only* UUID "b4a6717f-e3ab-4348-8e18-022827ef3177"
 # to use this multiplexer. You can add as many UUIDs as you want.
 #
-# To make it public, leave out the `allowedUuids` field.
+# To make it public, leave out the `AllowedUuids` field.
 #
 # It is *not* possible to have multiple multiplexers on the same port.
 
-[managed_servers]
+[ManagedServers]
 
 # Define your managed servers
 #
@@ -28,48 +28,49 @@
 
 # Example:
 #
-#   [managedServers.my_server]
+#   [ManagedServers.MyServer]
 #
 #   # The server display name (used for messages and substitutions)
 #
-#   displayName = "§6> §6§lMy Minecraft Server§6 <"
+#   DisplayName = "§6> §6§lMy Minecraft Server§6 <"
 #
 #       # The online configuration, things to show in the server list
 #       # when the server is online
 #
-#       [managedServers.my_server.online]
+#       [ManagedServers.MyServer.Online]
 #
 #       # The server favicon (absolute path or relative to proxy directory)
-#       favicon = "../{SERVER}/server-icon.png"
+#       Favicon = "../{SERVER}/server-icon.png"
 #
-#       # The motd for the server list (up to two lines)
-#       motd = "{SERVER_DISPLAY_NAME}\n§aowo§7 | {QUOTE}"
+#       # The MOTD for the server list (up to two lines)
+#       MOTD = "{SERVER_DISPLAY_NAME}\n§aowo§7 | {QUOTE}"
 #
 #       # A list of quotes for substitutions
-#       quotes = ["Ah, yes."]
+#       Quotes = ["Ah, yes."]
 #
 #       # The offline configuration, for when the server is offline
 #
-#       [managedServers.my_server.offline]
-#       favicon = "../{SERVER}/server-icon-offline.png"
-#       motd = "{SERVER_DISPLAY_NAME}\n§cowo§7 | {QUOTE}"
-#       quotes = ["Paniik!"]
+#       [ManagedServers.MyServer.Offline]
+#       Favicon = "../{SERVER}/server-icon-offline.png"
+#       MOTD = "{SERVER_DISPLAY_NAME}\n§cowo§7 | {QUOTE}"
+#       Quotes = ["Paniik!"]
 #
 #       # Automatic start settings
-#       [managedServers.my_server.start]
+#       [ManagedServers.MyServer.Start]
 #
 #       # The command to execute when the first player joins while the server is offline
 #       # {SERVER}: The server identifier
 #
-#       cmd = ["/path/to/startscript", "arg1", "will also substitute {SERVER}"]
+#       CMD = ["/path/to/startscript", "arg1", "will also substitute {SERVER}"]
 #
 #       # How long the start command is allowed to run before it is killed
 #       # If unspecified, it will be 10 seconds
 #
-#       timeout = 10
+#       Timeout = 10
 #
 #       # The kick message to send to the player that started the server
 #       # {SERVER}: The server identifier
 #       # {SERVER_DISPLAY_NAME}: The server display name
 #
-#       kickMsg = "{SERVER_DISPLAY_NAME} §7is being started.\n§7Try again in §b10 Seconds§7 \\(^-^)/"
+#       KickMsg = "{SERVER_DISPLAY_NAME} §7is being started.\n§7Try again in §b10 Seconds§7 \\(^-^)/"
+
