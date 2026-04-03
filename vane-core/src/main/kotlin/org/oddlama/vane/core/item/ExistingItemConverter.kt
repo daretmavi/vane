@@ -27,31 +27,16 @@ class ExistingItemConverter(context: Context<Core?>) : Listener<Core?>(context.n
         val modelDataInt = itemStack.itemMeta.customModelDataComponent.floats.firstOrNull()?.toInt()
             ?: return null
 
-        val newItemKey = when (modelDataInt) {
-            7758190 -> "vane_trifles:wooden_sickle"
-            7758191 -> "vane_trifles:stone_sickle"
-            7758192 -> "vane_trifles:iron_sickle"
-            7758193 -> "vane_trifles:golden_sickle"
-            7758194 -> "vane_trifles:diamond_sickle"
-            7758195 -> "vane_trifles:netherite_sickle"
-            7758254, 7758255, 7758256, 7758257, 7758258, 7758259 -> "vane_trifles:file"
-            7758318 -> "vane_trifles:empty_xp_bottle"
-            7758382 -> "vane_trifles:small_xp_bottle"
-            7758383 -> "vane_trifles:medium_xp_bottle"
-            7758384 -> "vane_trifles:large_xp_bottle"
-            7758446 -> "vane_trifles:home_scroll"
-            7758510 -> "vane_trifles:unstable_scroll"
-            7758574 -> "vane_trifles:reinforced_elytra"
-            7823726 -> "vane_enchantments:ancient_tome"
-            7823727 -> "vane_enchantments:enchanted_ancient_tome"
-            7823790 -> "vane_enchantments:ancient_tome_of_knowledge"
-            7823791 -> "vane_enchantments:enchanted_ancient_tome_of_knowledge"
-            7823854 -> "vane_enchantments:ancient_tome_of_the_gods"
-            7823855 -> "vane_enchantments:enchanted_ancient_tome_of_the_gods"
-            else -> null
-        } ?: return null
+        // Newer mappings (1.21.4+) changed how custom-model-data float values map
+        // to integer representations. Instead of maintaining a hardcoded list of
+        // legacy integers, resolve the target custom item dynamically by
+        // comparing the legacy float->int representation of registered items.
+        val registry = module!!.itemRegistry() ?: return null
+        for (ci in registry.all()) {
+            if (ci.customModelData().toFloat().toInt() == modelDataInt) return ci
+        }
 
-        return module!!.itemRegistry()?.get(NamespacedKey.fromString(newItemKey) ?: return null)
+        return null
     }
 
     /**
