@@ -142,7 +142,7 @@ class ManagedServer(
             // [managedServers.MyServer.state]
             if (config != null) {
                 // quotes = ["", ...]
-                val quotesList = config.get<MutableList<String?>?>("quotes")
+                val quotesList = config.get<MutableList<String?>?>("Quotes")
 
                 if (quotesList != null) {
                     quotes = quotesList
