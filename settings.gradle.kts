@@ -1,8 +1,8 @@
 pluginManagement {
-	repositories {
-		gradlePluginPortal()
+    repositories {
+        gradlePluginPortal()
         //maven("https://repo.papermc.io/repository/maven-public/")
-	}
+    }
     plugins {
         kotlin("jvm") version "2.3.20"
     }
@@ -29,3 +29,5 @@ include(":vane-proxy-core")
 include(":vane-regions")
 include(":vane-trifles")
 include(":vane-velocity")
+
+include("vane-geyser-extension")

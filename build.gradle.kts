@@ -22,6 +22,7 @@ dependencies {
     dokka(project(":vane-regions"))
     dokka(project(":vane-trifles"))
     dokka(project(":vane-velocity"))
+    dokka(project(":vane-geyser-extension"))
 }
 
 dokka {
@@ -56,6 +57,7 @@ subprojects {
 	repositories {
 		mavenLocal()
 		mavenCentral()
+		maven("https://repo.opencollab.dev/main/")
 		maven("https://repo.papermc.io/repository/maven-public/")
 		maven("https://repo.mikeprimm.com/")
 		maven("https://repo.codemc.org/repository/maven-public/")
@@ -119,9 +121,9 @@ configure(subprojects.filter {
 }
 
 
-// All Projects except proxies and annotations.
+// All Projects except proxies, annotations and Geyser extension.
 val vanePlugins = subprojects.filter {
-	!listOf("vane-annotations", "vane-velocity", "vane-proxy-core").contains(it.name)
+	!listOf("vane-annotations", "vane-velocity", "vane-proxy-core", "vane-geyser-extension").contains(it.name)
 }
 configure(vanePlugins) {
 	val projectProperties = project.properties
