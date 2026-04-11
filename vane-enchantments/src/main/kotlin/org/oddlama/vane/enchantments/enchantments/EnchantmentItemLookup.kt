@@ -20,7 +20,7 @@ internal data class EnchantedItem(val item: ItemStack, val level: Int)
  */
 internal fun Player.chestplateEnchantment(enchantment: Enchantment?): EnchantedItem? {
     val bukkitEnchantment = enchantment ?: return null
-    val chest = equipment.chestplate ?: return null
+    val chest = equipment.chestplate
     val level = chest.getEnchantmentLevel(bukkitEnchantment)
     if (level == 0) return null
     return EnchantedItem(chest, level)

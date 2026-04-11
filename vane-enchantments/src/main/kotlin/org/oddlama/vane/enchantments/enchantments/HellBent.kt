@@ -78,7 +78,7 @@ class HellBent(context: Context<Enchantments?>) : CustomEnchantment<Enchantments
 
         // Get helmet
         val player = entity
-        val helmet = player.equipment.helmet ?: return
+        val helmet = player.equipment.helmet
 
         // Check enchantment
         if (helmet.getEnchantmentLevel(requireNotNull(bukkit())) == 0) {

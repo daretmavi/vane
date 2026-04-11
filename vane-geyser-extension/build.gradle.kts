@@ -95,6 +95,6 @@ tasks.named("build") {
     dependsOn("copyJar")
 }
 kotlin {
-    jvmToolchain(21)
+    jvmToolchain(25)
 }
 

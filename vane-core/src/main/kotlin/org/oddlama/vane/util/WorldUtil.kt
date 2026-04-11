@@ -34,7 +34,6 @@ object WorldUtil {
             val relFrom = world.time
             val relTo = if (worldTicks > relFrom) worldTicks else worldTicks + 24000
             val deltaTicks = relTo - relFrom
-            val absoluteFrom = world.fullTime
 
             var elapsed = 0L
             val task = plugin.server.scheduler.runTaskTimer(plugin, Runnable {
@@ -45,7 +44,8 @@ object WorldUtil {
                 }
                 val linDelta = elapsed.toFloat() / interpolationTicks
                 val delta = (1f - cos(PI * linDelta).toFloat()) / 2f
-                world.fullTime = absoluteFrom + (deltaTicks * delta).toLong()
+                // Use relative day time to avoid deprecated fullTime setter.
+                world.time = (relFrom + (deltaTicks * delta).toLong()) % 24000L
                 elapsed++
             }, 1L, 1L)
 

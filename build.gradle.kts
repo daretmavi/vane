@@ -33,7 +33,7 @@ dokka {
 }
 
 kotlin {
-    jvmToolchain(21)
+    jvmToolchain(25)
 }
 
 // We don't need to generate an empty `vane.jar`

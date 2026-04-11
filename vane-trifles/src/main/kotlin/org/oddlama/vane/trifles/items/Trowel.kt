@@ -208,7 +208,7 @@ class Trowel(context: Context<Trifles?>) : org.oddlama.vane.core.item.CustomItem
             val nmsWorld = Nms.worldHandle(player.world)
 
             // Build NMS placement context to preserve vanilla placement rules.
-            val direction = CraftBlock.blockFaceToNotch(event.blockFace)
+            val direction = CraftBlock.blockFaceToNotch(event.blockFace) ?: return
             val clickedBlock = block ?: return
             val blockPos = BlockPos(clickedBlock.x, clickedBlock.y, clickedBlock.z)
             val interactionPoint = event.interactionPoint ?: return
