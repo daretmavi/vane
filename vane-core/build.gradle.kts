@@ -71,6 +71,7 @@ tasks {
 repositories {
     mavenCentral()
 }
+
 kotlin {
     jvmToolchain(21)
 }

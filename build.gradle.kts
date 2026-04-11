@@ -32,8 +32,8 @@ dokka {
     }
 }
 
-java {
-	toolchain.languageVersion.set(JavaLanguageVersion.of(21))
+kotlin {
+    jvmToolchain(21)
 }
 
 // We don't need to generate an empty `vane.jar`
