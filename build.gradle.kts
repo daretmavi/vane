@@ -36,10 +36,10 @@ kotlin {
     jvmToolchain(25)
 }
 
-// We don't need to generate an empty `vane.jar`
-tasks.withType<Jar> {
-	enabled = false
-}
+//// We don't need to generate an empty `vane.jar`
+//tasks.withType<Jar> {
+//	enabled = false
+//}
 
 
 tasks {
@@ -71,13 +71,19 @@ tasks {
 			"-Dcom.mojang.eula.agree=true"
 		)
 	}
+	
+	register("runVelocity") {
+		description = "Runs Velocity using the :vane-velocity project configuration"
+		group = "run velocity"
+		dependsOn(":vane-velocity:runVelocity")
+	}
 }
 
 // Common settings to all subprojects.
 subprojects {
-	apply(plugin = "java-library")
-	apply(plugin = "java")
-    apply(plugin = "org.jetbrains.dokka")
+	pluginManager.apply("java-library")
+	pluginManager.apply("java")
+    pluginManager.apply("org.jetbrains.dokka")
 
 	group = "org.oddlama.vane"
 	version = "1.21.1"
@@ -120,7 +126,7 @@ subprojects {
 configure(subprojects.filter {
 	!listOf("vane-velocity", "vane-proxy-core").contains(it.name)
 }) {
-	apply(plugin = "io.papermc.paperweight.userdev")
+    pluginManager.apply("io.papermc.paperweight.userdev")
 
     tasks.withType<JavaCompile> {
 		options.compilerArgs.addAll(arrayOf("-Xlint:-this-escape"))
@@ -141,6 +147,7 @@ configure(subprojects.filter {
 	listOf("vane-regions", "vane-core", "vane-portals", "vane-regions", "vane-trifles", "vane-enchantments", "vane-permissions", "vane-admin", "vane-bedtime").contains(it.name)
 }) {
 	tasks.register<Copy>("copyJar") {
+		description = "Copies the shadow jar to the target directory"
 		evaluationDependsOn(project.path)
 		from(tasks.findByPath("shadowJar"))
 		into("${project.rootProject.projectDir}/target")
@@ -205,6 +212,7 @@ runPaper {
 
 tasks.register<Delete>("cleanVaneRuntimeTranslations") {
 	group = "run paper"
+	description = "Deletes generated runtime translation files"
 	delete(fileTree("run").matching {
 		include("plugins/vane-*/lang-*.yml")
 	})
@@ -212,6 +220,7 @@ tasks.register<Delete>("cleanVaneRuntimeTranslations") {
 
 tasks.register<Delete>("cleanVaneConfigurations") {
 	group = "run paper"
+	description = "Deletes generated configuration files"
 	delete(fileTree("run").matching {
 		include("plugins/vane-*/config.yml")
 	})
@@ -219,6 +228,7 @@ tasks.register<Delete>("cleanVaneConfigurations") {
 
 tasks.register<Delete>("cleanVaneStorage") {
 	group = "run paper"
+	description = "Deletes runtime storage files"
 	delete(fileTree("run").matching {
 		include("plugins/vane-*/storage.json")
 	})
@@ -226,6 +236,7 @@ tasks.register<Delete>("cleanVaneStorage") {
 
 tasks.register<Delete>("cleanVane") {
 	group = "run paper"
+	description = "Deletes all runtime plugin files"
 	delete(fileTree("run").matching {
 		include("plugins/vane-*/")
 	})
@@ -233,6 +244,7 @@ tasks.register<Delete>("cleanVane") {
 
 tasks.register<Delete>("cleanWorld") {
 	group = "run paper"
+	description = "Deletes generated world folders"
 	delete(fileTree("run").matching {
 		include(
 			"world",

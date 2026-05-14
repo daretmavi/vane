@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.shadow)
+    id("xyz.jpenilla.run-velocity")
     kotlin("jvm")
 }
 
@@ -28,6 +29,10 @@ tasks.register<Copy>("copyJar") {
 
 tasks {
     val velocityPluginVersion = project.version.toString()
+
+    runVelocity {
+        velocityVersion(rootProject.libs.versions.velocity.get())
+    }
 
     shadowJar {
         dependencies {

@@ -1,5 +1,6 @@
 [versions]
 paper = "26.1.2.build.+"
+velocity = "3.5.0-SNAPSHOT"
 bstats = "3.2.1"
 dokka = "2.2.0"
 geyser = "2.9.5-SNAPSHOT"
