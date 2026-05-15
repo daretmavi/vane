@@ -36,10 +36,10 @@ kotlin {
     jvmToolchain(25)
 }
 
-//// We don't need to generate an empty `vane.jar`
-//tasks.withType<Jar> {
-//	enabled = false
-//}
+// We don't need to generate an empty `vane.jar`
+tasks.withType<Jar> {
+	enabled = false
+}
 
 
 tasks {

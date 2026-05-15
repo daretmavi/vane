@@ -21,6 +21,7 @@ kotlin {
 }
 
 tasks.register<Copy>("copyJar") {
+    description = "Copies the shaded vane-velocity jar to the root target directory"
     from(tasks.shadowJar)
     into("${project.rootProject.projectDir}/target")
     duplicatesStrategy = DuplicatesStrategy.INCLUDE
@@ -31,7 +32,17 @@ tasks {
     val velocityPluginVersion = project.version.toString()
 
     runVelocity {
+        description = "Runs a local Velocity proxy with the vane-velocity plugin"
         velocityVersion(rootProject.libs.versions.velocity.get())
+        jvmArgs(
+            "-XX:+UseG1GC",
+            "-XX:G1HeapRegionSize=4M",
+            "-XX:+UnlockExperimentalVMOptions",
+            "-XX:+ParallelRefProcEnabled",
+            "-XX:+AlwaysPreTouch",
+            "-XX:MaxInlineLevel=15",
+            "--enable-native-access=ALL-UNNAMED"
+        )
     }
 
     shadowJar {
