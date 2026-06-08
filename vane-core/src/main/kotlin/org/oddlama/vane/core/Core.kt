@@ -170,7 +170,7 @@ class Core : Module<Core?>() {
             frozen.set(BuiltInRegistries.ENTITY_TYPE, false)
             intrusiveHolderCache.set(
                 BuiltInRegistries.ENTITY_TYPE,
-                IdentityHashMap<EntityType<*>?, Holder.Reference<EntityType<*>?>?>()
+                IdentityHashMap<EntityType<*>, Holder.Reference<EntityType<*>>>()
             )
         } catch (e: Exception) {
             when (e) {
