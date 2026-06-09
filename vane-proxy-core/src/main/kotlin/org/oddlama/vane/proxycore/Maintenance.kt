@@ -1,7 +1,7 @@
 package org.oddlama.vane.proxycore
 
 import org.oddlama.vane.proxycore.scheduler.ProxyScheduledTask
-import org.oddlama.vane.util.formatTime
+import org.oddlama.vane.proxycore.util.formatTime
 import java.io.BufferedReader
 import java.io.File
 import java.io.FileReader
@@ -214,8 +214,8 @@ class Maintenance(private val plugin: VaneProxyPlugin) {
             time = formatTime(timespan)
         }
 
-        val durationString: String?
-        val remainingString: String?
+        val durationString: String
+        val remainingString: String
         val currentDuration = duration
         if (currentDuration != null) {
             var remaining = currentDuration + (start - System.currentTimeMillis())

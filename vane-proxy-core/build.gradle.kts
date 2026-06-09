@@ -17,13 +17,12 @@ sourceSets {
 dependencies {
     implementation(libs.nightConfig)
     implementation(libs.slf4j)
-    implementation(rootProject.project(":vane-core"))
     compileOnly(libs.json)
     implementation(kotlin("stdlib"))
 }
 
 kotlin {
-    jvmToolchain(25)
+    jvmToolchain(21)
 }
 
 tasks {

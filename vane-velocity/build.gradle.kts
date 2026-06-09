@@ -11,13 +11,12 @@ dependencies {
     implementation(libs.bstatsVelocity)
     implementation(libs.bstatsBase)
     implementation(libs.json)
-    implementation(rootProject.project(":vane-core"))
     implementation(rootProject.project(":vane-proxy-core"))
     implementation(kotlin("stdlib"))
 }
 
 kotlin {
-    jvmToolchain(25)
+    jvmToolchain(21)
 }
 
 tasks.register<Copy>("copyJar") {
@@ -50,7 +49,6 @@ tasks {
             include(dependency("org.bstats:bstats-velocity"))
             include(dependency("org.bstats:bstats-base"))
             include(dependency("org.json:json"))
-            include(dependency(rootProject.project(":vane-core")))
             include(dependency(rootProject.project(":vane-proxy-core")))
             include(dependency("org.jetbrains.kotlin:kotlin-stdlib"))
         }

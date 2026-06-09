@@ -5,7 +5,7 @@ import org.oddlama.vane.proxycore.Util
 import org.oddlama.vane.proxycore.VaneProxyPlugin
 import org.oddlama.vane.proxycore.config.AuthMultiplex
 import org.oddlama.vane.proxycore.config.IVaneProxyServerInfo
-import org.oddlama.vane.util.Resolve.resolveUuid
+import org.oddlama.vane.proxycore.util.Resolve.resolveUuid
 import java.io.ByteArrayOutputStream
 import java.io.DataOutputStream
 import java.io.IOException
