@@ -62,6 +62,9 @@ interface CustomItem {
     /** Returns the custom model data value applied to this item. */
     fun customModelData(): Int
 
+    /** Returns the item model applied to this item. */
+    fun itemModel(): NamespacedKey = key()
+
     /**
      * Returns the display name for newly created items of this type. This will only NOT be updated
      * on existing items. If you want that behavior, you can easily implement it by overriding

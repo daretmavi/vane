@@ -39,6 +39,7 @@ object CustomItemHelper {
             val customModelDataComponent = meta.customModelDataComponent
             customModelDataComponent.floats = listOf(customItem.customModelData().toFloat())
             meta.setCustomModelDataComponent(customModelDataComponent)
+            meta.setItemModel(customItem.itemModel())
         }
 
         DurabilityManager.initializeOrUpdateMax(customItem, itemStack)

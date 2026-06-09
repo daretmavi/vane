@@ -66,6 +66,12 @@ class SlimeBucket(context: Context<Trifles?>) : org.oddlama.vane.core.item.Custo
             val customModelDataComponent = meta.customModelDataComponent
             customModelDataComponent.floats = listOf(correctModelData)
             meta.setCustomModelDataComponent(customModelDataComponent)
+
+            val correctItemModel = if (player.chunk.isSlimeChunk)
+                org.bukkit.NamespacedKey("vane_trifles", "slime_bucket_excited")
+            else
+                org.bukkit.NamespacedKey("vane_trifles", "slime_bucket")
+            meta.setItemModel(correctItemModel)
         }
 
         if (itemInHand.amount == 1) {
@@ -146,6 +152,12 @@ class SlimeBucket(context: Context<Trifles?>) : org.oddlama.vane.core.item.Custo
                         val customModelDataComponent = meta.customModelDataComponent
                         customModelDataComponent.floats = listOf(correctModelData)
                         meta.setCustomModelDataComponent(customModelDataComponent)
+
+                        val correctItemModel = if (inSlimeChunk)
+                            org.bukkit.NamespacedKey("vane_trifles", "slime_bucket_excited")
+                        else
+                            org.bukkit.NamespacedKey("vane_trifles", "slime_bucket")
+                        meta.setItemModel(correctItemModel)
                     }
                 }
             }
