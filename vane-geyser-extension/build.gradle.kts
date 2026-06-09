@@ -84,6 +84,7 @@ tasks {
 }
 // Register copyJar at top-level so we can reference the shadowJar task provider
 tasks.register<Copy>("copyJar") {
+    description = "Copy the produced shadow jar to the repository target directory"
     from(tasks.named("shadowJar"))
     into("${project.rootProject.projectDir}/target")
     duplicatesStrategy = DuplicatesStrategy.INCLUDE

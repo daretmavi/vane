@@ -112,7 +112,7 @@ class VanillaFunctionalityInhibitor(context: Context<Core?>?) : Listener<Core?>(
         if (recipe !is SmithingRecipe || !recipe.willCopyNbt()) return
 
         val customItemResult = module!!.itemRegistry()?.get(recipe.result) ?: return
-        val inputComponents = CraftItemStack.asNMSCopy(event.inventory.inputEquipment).getComponents()
+        val inputComponents = CraftItemStack.asNMSCopy(event.inventory.inputEquipment).components
         val nmsResult = CraftItemStack.asNMSCopy(recipe.result).also { it.applyComponents(inputComponents) }
         event.result = customItemResult.convertExistingStack(CraftItemStack.asCraftMirror(nmsResult))
     }

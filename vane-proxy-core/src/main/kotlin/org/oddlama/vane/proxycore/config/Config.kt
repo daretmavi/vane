@@ -61,7 +61,7 @@ class Config(file: File) {
                 require(value is CommentedConfig) { "Managed server '$key' has an invalid configuration!" }
 
                 val displayNameAny = value.get<Any?>("DisplayName")
-                val displayName = if (displayNameAny is String) displayNameAny else key
+                val displayName = displayNameAny as? String ?: key
 
                 val managedServer = ManagedServer(
                     key,

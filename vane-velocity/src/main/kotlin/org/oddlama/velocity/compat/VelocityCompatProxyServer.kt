@@ -1,12 +1,11 @@
 package org.oddlama.velocity.compat
 
-import com.velocitypowered.api.proxy.Player
 import com.velocitypowered.api.proxy.ProxyServer
 import net.kyori.adventure.text.Component
 import org.oddlama.vane.proxycore.ProxyPlayer
 import org.oddlama.vane.proxycore.scheduler.ProxyTaskScheduler
 import org.oddlama.velocity.compat.scheduler.VelocityCompatProxyTaskScheduler
-import java.util.UUID
+import java.util.*
 
 /**
  * Velocity implementation of the proxy-core server abstraction.
