@@ -71,9 +71,9 @@ permissions plugin, such as [LuckPerms](https://luckperms.net).
 
 ## Building from source
 
-You can, of course, build the plugin yourself. To do that, you need at least JDK 17.
+You can, of course, build the plugin yourself. To do that, you need at least JDK 21 and 25 installed.
 
-1. Execute `./gradlew build`
+1. Execute `./gradlew build --no-daemon --warning-mode all`
 2. All resulting jar files that can be used on a server will be in `target/`.
 
 If you experience "peer not authenticated" issues from Gradle, just retry.
