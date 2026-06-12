@@ -54,7 +54,7 @@ class Vane : Extension {
             Identifier.of("enchanted_book"),
             CustomItemDefinition.builder(
                 Identifier.of("vane_enchantments:item/enchanted_ancient_tome"),
-                Identifier.of("vane_enchantments:ancient_tome"),
+                Identifier.of("vane_enchantments:enchanted_ancient_tome"),
             )
                 .bedrockOptions(CustomItemBedrockOptions.builder()
                     .icon("vane_enchantments.item_enchanted_ancient_tome")
@@ -80,7 +80,7 @@ class Vane : Extension {
             Identifier.of("enchanted_book"),
             CustomItemDefinition.builder(
                 Identifier.of("vane_enchantments:item/enchanted_ancient_tome_of_knowledge"),
-                Identifier.of("vane_enchantments:ancient_tome_of_knowledge")
+                Identifier.of("vane_enchantments:enchanted_ancient_tome_of_knowledge")
             )
                 .bedrockOptions(CustomItemBedrockOptions.builder()
                     .icon("vane_enchantments.item_enchanted_ancient_tome_of_knowledge")
@@ -106,7 +106,7 @@ class Vane : Extension {
             Identifier.of("enchanted_book"),
             CustomItemDefinition.builder(
                 Identifier.of("vane_enchantments:item/enchanted_ancient_tome_of_the_gods"),
-                Identifier.of("vane_enchantments:ancient_tome_of_the_gods")
+                Identifier.of("vane_enchantments:enchanted_ancient_tome_of_the_gods")
             )
                 .bedrockOptions(CustomItemBedrockOptions.builder()
                     .icon("vane_enchantments.item_enchanted_ancient_tome_of_the_gods")
