@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        project: [ 'admin', 'bedtime', 'core', 'enchantments', 'permissions', 'portals', 'regions', 'trifles', 'velocity' ]
+        project: [ 'admin', 'bedtime', 'core', 'enchantments', 'permissions', 'portals', 'regions', 'trifles', 'velocity', 'geyser-extension' ]
 
     steps:
       - uses: actions/checkout@v6
