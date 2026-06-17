@@ -210,16 +210,17 @@ abstract class Command<T : Module<T?>?> @JvmOverloads constructor(
     fun params(): Param = rootParam
 
     /**
-     * Returns a brigadier command node with permission requirements applied.
+     * Returns the brigadier command node with permission requirements applied.
+     * Built lazily so the shared builder is only mutated once, preventing
+     * cumulative corruption when LifecycleEvents.COMMANDS replays late handlers.
      */
-    val command: LiteralCommandNode<CommandSourceStack>
-        get() {
-            val cmd = getCommandBase()
-            val oldRequirement = cmd.requirement
-            return cmd.requires { stack ->
-                stack.sender.hasPermission(permission) && oldRequirement.test(stack)
-            }.build()
-        }
+    val command: LiteralCommandNode<CommandSourceStack> by lazy {
+        val cmd = getCommandBase()
+        val existingRequirement = cmd.requirement
+        cmd.requires { stack ->
+            stack.sender.hasPermission(permission) && existingRequirement.test(stack)
+        }.build()
+    }
 
     /**
      * Returns configured aliases.

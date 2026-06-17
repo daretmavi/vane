@@ -423,8 +423,15 @@ abstract class Module<T : Module<T?>?> : JavaPlugin(), Context<T?>, Listener {
     /** Returns module annotation short name. */
     val annotationName: String get() = annotation.name
 
+    /** Command names whose lifecycle handlers have already been installed. */
+    private val registeredCommands = mutableSetOf<String>()
+
     /** Registers a brigadier-backed command during lifecycle command registration. */
     fun registerCommand(command: Command<*>) {
+        // Guard: only register the lifecycle handler once per command to prevent
+        // handler accumulation during module reload cycles. The brigadier node
+        // persists in the dispatcher regardless of Bukkit command map changes.
+        if (!registeredCommands.add(command.name)) return
         val manager: LifecycleEventManager<Plugin> = lifecycleManager
         manager.registerEventHandler(LifecycleEvents.COMMANDS) { event ->
             event.registrar().register(command.command, command.langDescription.str(), command.getAliases())
