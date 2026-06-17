@@ -9,7 +9,7 @@ import org.geysermc.event.subscribe.Subscribe
 import org.geysermc.geyser.api.event.lifecycle.*
 import org.geysermc.geyser.api.extension.Extension
 
-class Vane : Extension {
+class VaneGeyser : Extension {
     @Subscribe
     fun onGeyserPreInitializeEvent(event: GeyserPreInitializeEvent) {
         val desc = description()
