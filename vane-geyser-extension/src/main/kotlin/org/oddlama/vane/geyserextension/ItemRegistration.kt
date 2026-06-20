@@ -7,10 +7,38 @@ import org.geysermc.geyser.api.item.custom.v2.component.java.JavaItemDataCompone
 import org.geysermc.geyser.api.predicate.item.ItemConditionPredicate
 import org.geysermc.geyser.api.util.Identifier
 
+/**
+ * Registers all Vane custom item definitions with the Geyser item translation layer.
+ *
+ * Each custom item is mapped from its Java Edition base item to a Bedrock-compatible
+ * [CustomItemDefinition] that references the corresponding resource pack model and icon.
+ * This allows Bedrock clients to see the correct textures and models for vane's custom items.
+ *
+ * Registered item categories:
+ * - **Enchantment Tomes** — Ancient tomes and their enchanted variants (`book` / `enchanted_book`).
+ * - **Sickles** — Tiered sickles mapped to their respective hoe base items.
+ * - **Containers** — Pouch (`dropper`) and Backpack (`shulker_box`).
+ * - **Slime Buckets** — Normal and excited variants (`slime_ball`).
+ * - **Reinforced Elytra** — Includes broken/unbroken predicates and armor values (`elytra`).
+ * - **Navigation Items** — North compass (`compass`), papyrus scroll (`paper`).
+ * - **Scrolls & Tools** — Home, unstable, spawn, lodestone, death scrolls, file, and trowel (`warped_fungus_on_a_stick`).
+ * - **XP Bottles** — Empty (`glass_bottle`) and small/medium/large (`honey_bottle`).
+ */
 object ItemRegistration {
+
+    /**
+     * Registers all Vane custom items for Bedrock clients.
+     *
+     * Called during the [GeyserDefineCustomItemsEvent] lifecycle event. Each registration
+     * maps a Java base item [Identifier] to a [CustomItemDefinition] containing:
+     * - A model identifier referencing the resource pack model.
+     * - An item identifier for the custom vane item.
+     * - Bedrock-specific options such as icon paths, protection values, and max damage.
+     *
+     * @param event the Geyser event used to register custom item definitions.
+     */
     fun onGeyserDefineCustomItems(event: GeyserDefineCustomItemsEvent) {
-        // Register the custom tome models. Map the Java base items (book / enchanted_book)
-        // to our resource pack model identifiers so Bedrock clients see the correct textures.
+        // --- Enchantment Tomes ---
         // Non-enchanted tomes use the normal book item, enchanted variants use enchanted_book.
 
         // Ancient Tome (normal book)

@@ -1,15 +1,27 @@
 package org.oddlama.vane.geyserextension
 
-
-/**
- * The main class of your extension - must implement extension, and be in the extension.yml file.
- * See [Extension] for available methods - for example to get the path to the configuration folder.
- */
 import org.geysermc.event.subscribe.Subscribe
 import org.geysermc.geyser.api.event.lifecycle.*
 import org.geysermc.geyser.api.extension.Extension
 
+/**
+ * Main entry point for the Vane Geyser extension.
+ *
+ * This class implements [Extension] and acts as the lifecycle manager for the
+ * vane-geyser-extension module. It subscribes to Geyser lifecycle events to:
+ * - Log extension metadata during pre-initialization.
+ * - Track loaded resource packs.
+ * - Delegate command and custom item registration to [CommandsRegistration] and [ItemRegistration].
+ *
+ * The extension is declared in `extension.yml` and instantiated by the Geyser extension loader.
+ */
 class VaneGeyser : Extension {
+    /**
+     * Handles the [GeyserPreInitializeEvent] to print a startup banner.
+     *
+     * Logs the extension name, version, authors, and a brief description
+     * to the Geyser console before the server finishes initialization.
+     */
     @Subscribe
     fun onGeyserPreInitializeEvent(event: GeyserPreInitializeEvent) {
         val desc = description()
@@ -23,15 +35,21 @@ class VaneGeyser : Extension {
         logger().info("")
     }
     /**
-     * Registering custom items/blocks, or adding resource packs (and basically all other events that are fired before Geyser initializes fully)
-     * are done in their respective events. See below for an example:
+     * Handles the [GeyserDefineResourcePacksEvent] to log resource pack loading.
+     *
+     * Logs the number of resource packs currently being loaded by Geyser.
+     * Additional resource packs could be registered via [GeyserDefineResourcePacksEvent.register]
+     * if needed.
      */
     @Subscribe
     fun onGeyserDefineResourcePacksEvent(event: GeyserDefineResourcePacksEvent) {
         logger().info("Loading: ${event.resourcePacks().size} resource packs.")
     }
     /**
-     * You can use the GeyserPostInitializeEvent to run anything after Geyser fully initialized and is ready to accept bedrock player connections.
+     * Handles the [GeyserPostInitializeEvent] fired after Geyser is fully initialized.
+     *
+     * Logs the extension name and its data folder path once Geyser is ready
+     * to accept Bedrock player connections.
      */
     @Subscribe
     fun onPostInitialize(event: GeyserPostInitializeEvent?) {
@@ -41,19 +59,33 @@ class VaneGeyser : Extension {
         }
     }
     /**
-     * You can reload your extension - for example, reload the extension config - by listening to Geyser's
-     * [org.geysermc.geyser.api.event.lifecycle.GeyserPreReloadEvent]
+     * Handles the [GeyserPreInitializeEvent] to support extension reloading.
+     *
+     * Logs a reload message when the Geyser reload cycle is triggered.
+     * Extension configuration could be re-read here if needed.
      */
     @Subscribe
     fun onGeyserReload(event: GeyserPreInitializeEvent?) {
         logger().info("Reloading ${description().name()}!")
     }
 
+    /**
+     * Handles the [GeyserDefineCommandsEvent] to register Bedrock-specific commands.
+     *
+     * Delegates to [CommandsRegistration] which registers the `/menu` command
+     * and all associated Bedrock form-based UI menus.
+     */
     @Subscribe
     fun onGeyserDefineCommands(event: GeyserDefineCommandsEvent) {
         CommandsRegistration.onGeyserDefineCommands(event, this)
     }
 
+    /**
+     * Handles the [GeyserDefineCustomItemsEvent] to register custom item definitions.
+     *
+     * Delegates to [ItemRegistration] which maps vane's custom Java items
+     * (tomes, sickles, scrolls, etc.) to their Bedrock resource pack counterparts.
+     */
     @Subscribe
     fun onGeyserDefineCustomItems(event: GeyserDefineCustomItemsEvent) {
         ItemRegistration.onGeyserDefineCustomItems(event)

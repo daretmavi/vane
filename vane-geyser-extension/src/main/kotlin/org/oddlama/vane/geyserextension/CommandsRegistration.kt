@@ -7,7 +7,32 @@ import org.geysermc.geyser.api.connection.GeyserConnection
 import org.geysermc.geyser.api.event.lifecycle.GeyserDefineCommandsEvent
 import org.geysermc.geyser.api.extension.Extension
 
+/**
+ * Registers Bedrock-specific commands and provides form-based UI menus for Geyser connections.
+ *
+ * This singleton handles the entire Bedrock form navigation tree for the Vane plugin suite.
+ * When a Bedrock player executes the `/menu` command, a hierarchical [SimpleForm] / [CustomForm]
+ * navigation system is presented, allowing access to all vane modules without typing commands.
+ *
+ * Menu hierarchy:
+ * - **Core** — Custom items, enchanting, resource pack generation, reload.
+ * - **Admin** — Autostop, game mode, slime chunk, time, weather.
+ * - **Permissions** — Group/player management, vouching.
+ * - **Regions** — Region management.
+ * - **Trifles** — Item finder, heads, set spawn.
+ * - **Velocity** — Maintenance scheduling, ping.
+ */
 object CommandsRegistration {
+
+    /**
+     * Registers the `/vane menu` command for Bedrock players.
+     *
+     * The command is restricted to Bedrock-only, player-only connections and
+     * opens the main [sendVaneMenu] form when executed.
+     *
+     * @param event the Geyser command definition event to register commands with.
+     * @param extension the parent [Extension] instance used for command builder context.
+     */
     fun onGeyserDefineCommands(event: GeyserDefineCommandsEvent, extension: Extension) {
         event.register(
             Command.builder<GeyserConnection>(extension)
@@ -23,6 +48,15 @@ object CommandsRegistration {
                 .build()
         )
     }
+
+    /**
+     * Displays the top-level Vane module selection menu.
+     *
+     * Presents buttons for Core, Admin, Permissions, Regions, Trifles, and Velocity,
+     * each navigating to their respective sub-menu.
+     *
+     * @param connection the Bedrock player connection to send the form to.
+     */
     private fun sendVaneMenu(connection: GeyserConnection) {
         val form = SimpleForm.builder()
             .title("Vane Command Menu")
@@ -45,6 +79,16 @@ object CommandsRegistration {
             .build()
         connection.sendForm(form)
     }
+
+    /**
+     * Displays the Permissions module menu.
+     *
+     * Provides options to list groups/permissions, manage player-group assignments,
+     * and vouch for players. Each option either executes a command directly or
+     * opens a follow-up input form.
+     *
+     * @param connection the Bedrock player connection to send the form to.
+     */
     private fun sendPermissionsMenu(connection: GeyserConnection) {
         val form = SimpleForm.builder()
             .title("Permissions Menu")
@@ -73,6 +117,12 @@ object CommandsRegistration {
             .build()
         connection.sendForm(form)
     }
+
+    /**
+     * Displays a form to query permissions for a specific group.
+     *
+     * @param connection the Bedrock player connection to send the form to.
+     */
     private fun sendPermListGroupPermissionsForm(connection: GeyserConnection) {
         val form = CustomForm.builder()
             .title("List Group Permissions")
@@ -83,6 +133,12 @@ object CommandsRegistration {
             }.build()
         connection.sendForm(form)
     }
+
+    /**
+     * Displays a form to query which groups a player belongs to.
+     *
+     * @param connection the Bedrock player connection to send the form to.
+     */
     private fun sendPermListPlayerGroupsForm(connection: GeyserConnection) {
         val form = CustomForm.builder()
             .title("List Player Groups")
@@ -93,6 +149,12 @@ object CommandsRegistration {
             }.build()
         connection.sendForm(form)
     }
+
+    /**
+     * Displays a form to query the effective permissions of a player.
+     *
+     * @param connection the Bedrock player connection to send the form to.
+     */
     private fun sendPermListPlayerPermissionsForm(connection: GeyserConnection) {
         val form = CustomForm.builder()
             .title("List Player Permissions")
@@ -103,6 +165,15 @@ object CommandsRegistration {
             }.build()
         connection.sendForm(form)
     }
+
+    /**
+     * Displays a player selection form to add a player to a permission group.
+     *
+     * Shows online players as buttons, plus a "Not connected" option for manual entry
+     * and a "Back" button to return to the permissions menu.
+     *
+     * @param connection the Bedrock player connection to send the form to.
+     */
     private fun sendPermAddPlayerGroupForm(connection: GeyserConnection) {
         val form = SimpleForm.builder().title("Add Player to Group")
         val players = getOnlinePlayerNames()
@@ -123,6 +194,15 @@ object CommandsRegistration {
         }
         connection.sendForm(form.build())
     }
+
+    /**
+     * Displays a player selection form to remove a player from a permission group.
+     *
+     * Shows online players as buttons, plus a "Not connected" option for manual entry
+     * and a "Back" button to return to the permissions menu.
+     *
+     * @param connection the Bedrock player connection to send the form to.
+     */
     private fun sendPermRemovePlayerGroupForm(connection: GeyserConnection) {
         val form = SimpleForm.builder().title("Remove Player from Group")
         val players = getOnlinePlayerNames()
@@ -143,6 +223,15 @@ object CommandsRegistration {
         }
         connection.sendForm(form.build())
     }
+
+    /**
+     * Displays a text input form for manually entering a player name.
+     *
+     * Used as a fallback when the target player is not currently online.
+     *
+     * @param connection the Bedrock player connection to send the form to.
+     * @param action the permission action to perform (`"add"` or `"remove"`).
+     */
     private fun sendPermAddManualPlayerForm(connection: GeyserConnection, action: String) {
         val form = CustomForm.builder()
             .title("Player Name")
@@ -155,6 +244,17 @@ object CommandsRegistration {
             }.build()
         connection.sendForm(form)
     }
+
+    /**
+     * Displays a group selection form for a permission action on a specific player.
+     *
+     * Shows the available groups (default, user, verified, admin) and executes
+     * the corresponding `permission add/remove` command on selection.
+     *
+     * @param connection the Bedrock player connection to send the form to.
+     * @param player the target player name.
+     * @param action the permission action to perform (`"add"` or `"remove"`).
+     */
     private fun sendPermSelectGroupFlow(connection: GeyserConnection, player: String, action: String) {
         val groups = listOf("default", "user", "verified", "admin")
         val form = SimpleForm.builder().title("Select Group for $player")
@@ -170,6 +270,14 @@ object CommandsRegistration {
         }
         connection.sendForm(form.build())
     }
+
+    /**
+     * Displays a player selection form for vouching.
+     *
+     * Shows online players as buttons, plus a "Not connected" option for manual entry.
+     *
+     * @param connection the Bedrock player connection to send the form to.
+     */
     private fun sendPermVouchForm(connection: GeyserConnection) {
         val form = SimpleForm.builder().title("Vouch for Player")
         val players = getOnlinePlayerNames()
@@ -190,6 +298,12 @@ object CommandsRegistration {
         }
         connection.sendForm(form.build())
     }
+
+    /**
+     * Displays a text input form for manually entering a player name to vouch for.
+     *
+     * @param connection the Bedrock player connection to send the form to.
+     */
     private fun sendPermVouchManualForm(connection: GeyserConnection) {
         val form = CustomForm.builder()
             .title("Vouch for Player")
@@ -200,6 +314,14 @@ object CommandsRegistration {
             }.build()
         connection.sendForm(form)
     }
+
+    /**
+     * Displays the Regions module menu.
+     *
+     * Provides access to the regions management menu and help commands.
+     *
+     * @param connection the Bedrock player connection to send the form to.
+     */
     private fun sendRegionsMenu(connection: GeyserConnection) {
         val form = SimpleForm.builder()
             .title("Regions Menu")
@@ -216,6 +338,14 @@ object CommandsRegistration {
             .build()
         connection.sendForm(form)
     }
+
+    /**
+     * Displays the Trifles module menu.
+     *
+     * Provides access to item finding, heads management, and spawn setting.
+     *
+     * @param connection the Bedrock player connection to send the form to.
+     */
     private fun sendTriflesMenu(connection: GeyserConnection) {
         val form = SimpleForm.builder()
             .title("Trifles Menu")
@@ -234,6 +364,12 @@ object CommandsRegistration {
             .build()
         connection.sendForm(form)
     }
+
+    /**
+     * Displays a text input form to search for an item by material name.
+     *
+     * @param connection the Bedrock player connection to send the form to.
+     */
     private fun sendTriflesFindItemForm(connection: GeyserConnection) {
         val form = CustomForm.builder()
             .title("Find Item")
@@ -244,6 +380,14 @@ object CommandsRegistration {
             }.build()
         connection.sendForm(form)
     }
+
+    /**
+     * Displays the Trifles Heads sub-menu.
+     *
+     * Provides access to the heads in-game menu and help command.
+     *
+     * @param connection the Bedrock player connection to send the form to.
+     */
     private fun sendTriflesHeadsMenu(connection: GeyserConnection) {
         val form = SimpleForm.builder()
             .title("Heads Menu")
@@ -260,6 +404,14 @@ object CommandsRegistration {
             .build()
         connection.sendForm(form)
     }
+
+    /**
+     * Displays the Velocity proxy module menu.
+     *
+     * Provides access to maintenance management and the ping command.
+     *
+     * @param connection the Bedrock player connection to send the form to.
+     */
     private fun sendVelocityMenu(connection: GeyserConnection) {
         val form = SimpleForm.builder()
             .title("Velocity Menu")
@@ -276,6 +428,14 @@ object CommandsRegistration {
             .build()
         connection.sendForm(form)
     }
+
+    /**
+     * Displays the Velocity maintenance management menu.
+     *
+     * Provides options to check status, enable/disable, cancel, or schedule maintenance.
+     *
+     * @param connection the Bedrock player connection to send the form to.
+     */
     private fun sendVelocityMaintenanceMenu(connection: GeyserConnection) {
         val form = SimpleForm.builder()
             .title("Maintenance Menu")
@@ -298,6 +458,14 @@ object CommandsRegistration {
             .build()
         connection.sendForm(form)
     }
+
+    /**
+     * Displays a form to schedule a maintenance window.
+     *
+     * Accepts two time-duration inputs: when to start and how long the maintenance lasts.
+     *
+     * @param connection the Bedrock player connection to send the form to.
+     */
     private fun sendVelocityMaintenanceScheduleForm(connection: GeyserConnection) {
         val form = CustomForm.builder()
             .title("Schedule Maintenance")
@@ -312,6 +480,14 @@ object CommandsRegistration {
             }.build()
         connection.sendForm(form)
     }
+
+    /**
+     * Displays the Admin module menu.
+     *
+     * Provides access to autostop, game mode, slime chunk detection, time, and weather controls.
+     *
+     * @param connection the Bedrock player connection to send the form to.
+     */
     private fun sendAdminMenu(connection: GeyserConnection) {
         val form = SimpleForm.builder()
             .title("Vane Admin Menu")
@@ -334,6 +510,14 @@ object CommandsRegistration {
             .build()
         connection.sendForm(form)
     }
+
+    /**
+     * Displays the Autostop management sub-menu.
+     *
+     * Provides options to abort, schedule, or check the status of an auto-stop timer.
+     *
+     * @param connection the Bedrock player connection to send the form to.
+     */
     private fun sendAutostopMenu(connection: GeyserConnection) {
         val form = SimpleForm.builder()
             .title("Vane Autostop Menu")
@@ -354,6 +538,12 @@ object CommandsRegistration {
             .build()
         connection.sendForm(form)
     }
+
+    /**
+     * Displays a form to schedule an auto-stop with a duration input.
+     *
+     * @param connection the Bedrock player connection to send the form to.
+     */
     private fun sendAutostopScheduleForm(connection: GeyserConnection) {
         val form = CustomForm.builder()
             .title("Autostop Schedule")
@@ -367,6 +557,14 @@ object CommandsRegistration {
             .build()
         connection.sendForm(form)
     }
+
+    /**
+     * Displays the game mode selection menu.
+     *
+     * Provides toggle and explicit mode options (Survival, Creative, Adventure, Spectator).
+     *
+     * @param connection the Bedrock player connection to send the form to.
+     */
     private fun sendGamemodeMenu(connection: GeyserConnection) {
         val form = SimpleForm.builder()
             .title("Gamemode")
@@ -389,6 +587,14 @@ object CommandsRegistration {
             .build()
         connection.sendForm(form)
     }
+
+    /**
+     * Displays the time-of-day selection menu.
+     *
+     * Provides presets: Dawn, Day, Noon, Afternoon, Dusk, Night, and Midnight.
+     *
+     * @param connection the Bedrock player connection to send the form to.
+     */
     private fun sendTimeMenu(connection: GeyserConnection) {
         val form = SimpleForm.builder()
             .title("Time")
@@ -415,6 +621,14 @@ object CommandsRegistration {
             .build()
         connection.sendForm(form)
     }
+
+    /**
+     * Displays the weather selection menu.
+     *
+     * Provides presets: Clear, Sun, Rain, and Thunder.
+     *
+     * @param connection the Bedrock player connection to send the form to.
+     */
     private fun sendWeatherMenu(connection: GeyserConnection) {
         val form = SimpleForm.builder()
             .title("Weather")
@@ -435,6 +649,15 @@ object CommandsRegistration {
             .build()
         connection.sendForm(form)
     }
+
+    /**
+     * Displays the Core module menu.
+     *
+     * Provides access to custom item management, enchanting, resource pack generation,
+     * help, reload, and a dev-only test command.
+     *
+     * @param connection the Bedrock player connection to send the form to.
+     */
     private fun sendCoreMenu(connection: GeyserConnection) {
         val form = SimpleForm.builder()
             .title("Vane Core Menu")
@@ -459,6 +682,14 @@ object CommandsRegistration {
             .build()
         connection.sendForm(form)
     }
+
+    /**
+     * Displays the custom item management sub-menu.
+     *
+     * Provides options to give custom items or view help.
+     *
+     * @param connection the Bedrock player connection to send the form to.
+     */
     private fun sendCustomItemMenu(connection: GeyserConnection) {
         val form = SimpleForm.builder()
             .title("Vane Custom Item Menu")
@@ -475,6 +706,14 @@ object CommandsRegistration {
             .build()
         connection.sendForm(form)
     }
+
+    /**
+     * Displays the custom item give menu, split by module.
+     *
+     * Provides sub-menus for Enchantments and Trifles custom items.
+     *
+     * @param connection the Bedrock player connection to send the form to.
+     */
     private fun sendCustomItemGiveMenu(connection: GeyserConnection) {
         val form = SimpleForm.builder()
             .title("Vane Custom Item Give Menu")
@@ -491,6 +730,14 @@ object CommandsRegistration {
             .build()
         connection.sendForm(form)
     }
+
+    /**
+     * Displays the Enchantment Tomes give menu.
+     *
+     * Lists all ancient tome variants (normal and enchanted) for direct giving.
+     *
+     * @param connection the Bedrock player connection to send the form to.
+     */
     private fun sendCustomItemGiveEnchantmentsMenu(connection: GeyserConnection) {
         val form = SimpleForm.builder()
             .title("Vane Enchantment Tomes")
@@ -515,6 +762,16 @@ object CommandsRegistration {
             .build()
         connection.sendForm(form)
     }
+
+    /**
+     * Displays the context-aware enchantment menu.
+     *
+     * Inspects the player's held item via reflection into the Geyser session to determine
+     * which enchantments are applicable, then presents only those enchantments as buttons.
+     * If no item is held (or the item is air), all known enchantments are shown.
+     *
+     * @param connection the Bedrock player connection to send the form to.
+     */
     private fun sendEnchantMenu(connection: GeyserConnection) {
         val formBuilder = SimpleForm.builder()
             .title("Vane Enchant Menu")
@@ -682,6 +939,14 @@ object CommandsRegistration {
         formBuilder.button("Back")
         connection.sendForm(formBuilder.build())
     }
+
+    /**
+     * Displays a level selection form for multi-level enchantments.
+     *
+     * @param connection the Bedrock player connection to send the form to.
+     * @param enchant the namespaced enchantment identifier (e.g. `"vane_enchantments:angel"`).
+     * @param maxLevel the maximum level for this enchantment.
+     */
     private fun sendEnchantLevelMenu(connection: GeyserConnection, enchant: String, maxLevel: Int) {
         val form = SimpleForm.builder()
             .title("Level: " + enchant.substringAfter(":").split("_").joinToString(" ") { it.replaceFirstChar { c -> c.uppercase() } })
@@ -701,6 +966,17 @@ object CommandsRegistration {
         }
         connection.sendForm(form.build())
     }
+
+    /**
+     * Reflectively retrieves the Java item identifier of the item in the player's main hand.
+     *
+     * Uses reflection to access Geyser's internal `GeyserSession` API since the public
+     * [GeyserConnection] interface does not expose inventory access. Returns `null` if
+     * the session class is unavailable or any reflection call fails.
+     *
+     * @param connection the Bedrock player connection to inspect.
+     * @return the Java identifier string (e.g. `"minecraft:diamond_sword"`), or `null` on failure.
+     */
     private fun getPlayerItemInHand(connection: GeyserConnection): String? {
         try {
             val sessionClass = Class.forName("org.geysermc.geyser.session.GeyserSession")
@@ -717,6 +993,14 @@ object CommandsRegistration {
             return null
         }
     }
+
+    /**
+     * Displays the Trifles custom items give menu.
+     *
+     * Lists all Trifles items (sickles, scrolls, bottles, etc.) for direct giving.
+     *
+     * @param connection the Bedrock player connection to send the form to.
+     */
     private fun sendCustomItemGiveTriflesMenu(connection: GeyserConnection) {
         val form = SimpleForm.builder()
             .title("Vane Trifles Items")
@@ -775,6 +1059,14 @@ object CommandsRegistration {
             .build()
         connection.sendForm(form)
     }
+
+    /**
+     * Displays the module reload selection menu.
+     *
+     * Provides options to reload all modules at once or individual modules.
+     *
+     * @param connection the Bedrock player connection to send the form to.
+     */
     private fun sendReloadMenu(connection: GeyserConnection) {
         val form = SimpleForm.builder()
             .title("Vane Reload Menu")
@@ -805,6 +1097,14 @@ object CommandsRegistration {
             .build()
         connection.sendForm(form)
     }
+
+    /**
+     * Lookup table mapping enchantment names to their maximum levels.
+     *
+     * Used by [sendEnchantMenu] to determine whether to show a level selection
+     * sub-menu or apply the enchantment directly. Enchantments not present in
+     * this map default to level 1.
+     */
     private val enchantMaxLevels = mapOf(
         "angel" to 5,
         "grappling_hook" to 3,
@@ -847,6 +1147,13 @@ object CommandsRegistration {
         "wind_burst" to 3
     )
 
+    /**
+     * Retrieves a sorted, deduplicated list of online player Java usernames.
+     *
+     * Used by permission and vouch forms to display selectable player buttons.
+     *
+     * @return a sorted list of unique Java usernames of currently connected Bedrock players.
+     */
     private fun getOnlinePlayerNames(): List<String> {
         return org.geysermc.geyser.api.GeyserApi.api().onlineConnections()
             .mapNotNull { it.javaUsername() }
