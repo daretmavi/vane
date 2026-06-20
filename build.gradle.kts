@@ -161,16 +161,18 @@ val vanePlugins = subprojects.filter {
 	!listOf("vane-annotations", "vane-velocity", "vane-proxy-core", "vane-geyser-extension").contains(it.name)
 }
 configure(vanePlugins) {
-	val projectProperties = project.properties
-
 	tasks {
-		build {
+		named("build") {
 			dependsOn("copyJar")
 		}
 
-		processResources {
+		val projectName = project.name
+		val projectVersion = project.version.toString()
+		named<ProcessResources>("processResources") {
+			inputs.property("name", projectName)
+			inputs.property("version", projectVersion)
 			filesMatching("**/*plugin.yml") {
-				expand(projectProperties)
+				expand(mapOf("name" to projectName, "version" to projectVersion))
 			}
 		}
 	}

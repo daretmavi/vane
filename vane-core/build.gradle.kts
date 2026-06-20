@@ -39,9 +39,6 @@ val resourcePackSha1: String by lazy {
     val sha1HashString: String = String.format("%040x", BigInteger(1, sha1Bytes))
     sha1HashString
 }
-
-val projectProperties: MutableMap<String, *> = project.properties
-
 tasks {
     shadowJar {
         dependencies {
@@ -62,9 +59,13 @@ tasks {
         relocate("kotlin", "org.oddlama.vane.external.kotlin")
     }
 
+    val projectVersion = project.version.toString()
+    val localResourcePackSha1 = resourcePackSha1
     processResources {
+        inputs.property("version", projectVersion)
+        inputs.property("resourcePackSha1", localResourcePackSha1)
         filesMatching("vane-core.properties") {
-            expand(projectProperties + mapOf("resourcePackSha1" to resourcePackSha1))
+            expand(mapOf("version" to projectVersion, "resourcePackSha1" to localResourcePackSha1))
         }
     }
 }

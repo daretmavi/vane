@@ -11,7 +11,7 @@ dependencies {
     implementation(libs.bstatsVelocity)
     implementation(libs.bstatsBase)
     implementation(libs.json)
-    implementation(rootProject.project(":vane-proxy-core"))
+    implementation(project(":vane-proxy-core"))
     implementation(kotlin("stdlib"))
 }
 
@@ -49,7 +49,7 @@ tasks {
             include(dependency("org.bstats:bstats-velocity"))
             include(dependency("org.bstats:bstats-base"))
             include(dependency("org.json:json"))
-            include(dependency(rootProject.project(":vane-proxy-core")))
+            include(dependency("org.oddlama.vane:vane-proxy-core"))
             include(dependency("org.jetbrains.kotlin:kotlin-stdlib"))
         }
 
