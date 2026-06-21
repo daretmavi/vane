@@ -39,8 +39,7 @@ tasks {
             "-XX:+UnlockExperimentalVMOptions",
             "-XX:+ParallelRefProcEnabled",
             "-XX:+AlwaysPreTouch",
-            "-XX:MaxInlineLevel=15",
-            "--enable-native-access=ALL-UNNAMED"
+            "-XX:MaxInlineLevel=15"
         )
     }
 
