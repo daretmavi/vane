@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.shadow)
     kotlin("jvm")
+    kotlin("kapt")
 }
 val id = project.property("id") as String
 val extensionName = project.property("name") as String
@@ -22,6 +23,7 @@ dependencies {
 
     // Include other dependencies here - e.g. configuration libraries.
     implementation(kotlin("stdlib"))
+    testImplementation(kotlin("test"))
 }
 
 afterEvaluate {

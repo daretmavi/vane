@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.shadow)
     alias(libs.plugins.blossom)
     kotlin("jvm")
+    kotlin("kapt")
 }
 
 sourceSets {
@@ -19,6 +20,7 @@ dependencies {
     implementation(libs.slf4j)
     compileOnly(libs.json)
     implementation(kotlin("stdlib"))
+    testImplementation(kotlin("test"))
 }
 
 kotlin {

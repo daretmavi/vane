@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.shadow)
     kotlin("jvm")
+    kotlin("kapt")
 }
 
 repositories {
@@ -10,6 +11,7 @@ repositories {
 dependencies {
     implementation(kotlin("stdlib"))
     compileOnly(project(":vane-core"))
+    testImplementation(kotlin("test"))
 }
 
 tasks {

@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.shadow)
     alias(libs.plugins.blossom) // Text replacement for version numbers
     kotlin("jvm")
+    kotlin("kapt")
 }
 
 sourceSets {
@@ -25,6 +26,7 @@ dependencies {
     api(libs.json)
     implementation(project(":vane-annotations"))
     implementation(kotlin("stdlib"))
+    testImplementation(kotlin("test"))
 }
 
 val resourcePackSha1: String by lazy {

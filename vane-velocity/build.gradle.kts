@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.shadow)
     id("xyz.jpenilla.run-velocity")
     kotlin("jvm")
+    kotlin("kapt")
 }
 
 dependencies {
@@ -13,6 +14,7 @@ dependencies {
     implementation(libs.json)
     implementation(project(":vane-proxy-core"))
     implementation(kotlin("stdlib"))
+    testImplementation(kotlin("test"))
 }
 
 kotlin {

@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.shadow)
     kotlin("jvm")
+    kotlin("kapt")
 }
 
 dependencies {
@@ -9,6 +10,7 @@ dependencies {
     compileOnly(libs.vault)
     compileOnly(libs.json)
     implementation(kotlin("stdlib"))
+    testImplementation(kotlin("test"))
 }
 
 tasks {
