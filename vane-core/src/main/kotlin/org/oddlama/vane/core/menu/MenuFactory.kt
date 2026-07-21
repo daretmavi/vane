@@ -35,7 +35,7 @@ object MenuFactory {
         val inputItem = inputItemStack.clone()
         val meta = inputItem.itemMeta
         meta.displayName(LegacyComponentSerializer.legacySection().deserialize(defaultName))
-        inputItem.setItemMeta(meta)
+        inputItem.itemMeta = meta
 
         val anvil = AnvilMenu(context, player, title)
         anvil.add(MenuItem(0, inputItem))

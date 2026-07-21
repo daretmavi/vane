@@ -71,7 +71,7 @@ class EntityMoveProcessor(context: Context<Portals?>?) : ModuleComponent<Portals
             val world: World? = module.server.getWorld(worldId)
             if (world != null) {
                 for (entity in world.entities) {
-                    moveEventCurrentPositions[entity.uniqueId] = Pair.of<Entity?, Location?>(entity, entity.location)
+                    moveEventCurrentPositions[entity.uniqueId] = Pair.of(entity, entity.location)
                 }
             }
         }

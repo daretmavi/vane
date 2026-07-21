@@ -225,7 +225,7 @@ class Portals : Module<Portals?>() {
     // Cache possible area materials. This is fine as only predefined styles can
     // change this.
     /** Cache of materials considered portal-area blocks for fast checks. */
-    var portalAreaMaterials: MutableSet<Material?> = HashSet<Material?>()
+    var portalAreaMaterials: MutableSet<Material?> = HashSet()
 
     // Track console items
     /** Floating item entities currently displayed on portal consoles. */
@@ -233,7 +233,7 @@ class Portals : Module<Portals?>() {
 
     // Connected portals (always stores both directions!)
     /** Bidirectional map of currently connected portals. */
-    private val connectedPortals: MutableMap<UUID?, UUID?> = HashMap<UUID?, UUID?>()
+    private val connectedPortals: MutableMap<UUID?, UUID?> = HashMap()
 
     // Unloading ticket counter per chunk
     /** Reference-counted chunk ticket counters for loaded portal chunks. */
@@ -241,7 +241,7 @@ class Portals : Module<Portals?>() {
 
     // Disable tasks for portals
     /** Scheduled delayed deactivation tasks by portal id. */
-    private val disableTasks: MutableMap<UUID?, BukkitTask?> = HashMap<UUID?, BukkitTask?>()
+    private val disableTasks: MutableMap<UUID?, BukkitTask?> = HashMap()
 
     /** Aggregated menu components for portal UIs. */
     var menus: PortalMenuGroup?
@@ -346,10 +346,7 @@ class Portals : Module<Portals?>() {
      * @return true when the two portals are considered in the same group
      */
     fun isInSameRegionGroup(a: Portal?, b: Portal?): Boolean {
-        if (isInSameRegionGroupCallback == null) {
-            return true
-        }
-        return isInSameRegionGroupCallback!!.apply(a, b)!!
+        return isInSameRegionGroupCallback == null || isInSameRegionGroupCallback!!.apply(a, b)!!
     }
 
     /**
@@ -357,10 +354,7 @@ class Portals : Module<Portals?>() {
      * @return true when the player is allowed to use portals in that group
      */
     fun playerCanUsePortalsInRegionGroupOf(player: Player?, portal: Portal?): Boolean {
-        if (playerCanUsePortalsInRegionGroupOfCallback == null) {
-            return true
-        }
-        return playerCanUsePortalsInRegionGroupOfCallback!!.apply(player, portal)!!
+        return playerCanUsePortalsInRegionGroupOfCallback == null || playerCanUsePortalsInRegionGroupOfCallback!!.apply(player, portal)!!
     }
 
     /** True when regions integration callbacks are available. */
@@ -559,7 +553,7 @@ class Portals : Module<Portals?>() {
 
         val chunkKey = block.chunk.chunkKey
         val blockToPortalBlock =
-            portalBlocksInChunk.computeIfAbsent(chunkKey) { k: Long? -> HashMap<Long?, PortalBlockLookup?>() }
+            portalBlocksInChunk.computeIfAbsent(chunkKey) { k: Long? -> HashMap() }
 
         blockToPortalBlock[blockKey(block)] = portalBlock.lookup(portal.id())
     }
@@ -761,7 +755,7 @@ class Portals : Module<Portals?>() {
     /** Module shutdown hook: disconnects portals, clears visuals/tickets, and persists state. */
     override fun onModuleDisable() {
         // Disable all portals now
-        for (id in ArrayList<UUID?>(connectedPortals.keys)) {
+        for (id in ArrayList(connectedPortals.keys)) {
             disconnectPortals(portalFor(id))
         }
 
@@ -1076,7 +1070,7 @@ class Portals : Module<Portals?>() {
         }
 
         // Convert portals from legacy storage
-        val removeFromLegacyStorage: MutableSet<UUID?> = HashSet<UUID?>()
+        val removeFromLegacyStorage: MutableSet<UUID?> = HashSet()
         var converted = 0
         for (portal in storagePortals.values) {
             if (portal.spawnWorld() != world.uid) {

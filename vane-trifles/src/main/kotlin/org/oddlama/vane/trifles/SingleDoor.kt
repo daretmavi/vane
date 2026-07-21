@@ -22,8 +22,6 @@ class SingleDoor private constructor(
 
     /**
      * Assumes valid door location already.
-     * 
-     * @param lowerBlock Block of the lower part of the door.
      */
     init {
         this.lower = asDoorState(lowerBlock)
@@ -45,8 +43,7 @@ class SingleDoor private constructor(
         val upperData: BlockData = otherVerticalHalf(lowerBlock).blockData
         upper = asDoorState(upperData)
 
-        if (lower == null) return false
-        return upper != null
+        return lower != null && upper != null
     }
 
     /**

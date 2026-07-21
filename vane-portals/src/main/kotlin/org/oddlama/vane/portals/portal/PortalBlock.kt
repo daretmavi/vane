@@ -31,12 +31,9 @@ class PortalBlock(private val block: LazyBlock, private val type: Type?) {
 
     /** Returns true when [other] refers to the same block position. */
     override fun equals(other: Any?): Boolean {
-        if (other !is PortalBlock) {
-            return false
-        }
+        return other is PortalBlock && block() == other.block()
 
         // Only block is compared, as the same block can only have one functions.
-        return block() == other.block()
     }
 
     /** Semantic role of a block inside portal structures. */

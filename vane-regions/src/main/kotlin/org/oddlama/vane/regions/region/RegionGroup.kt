@@ -28,12 +28,12 @@ class RegionGroup {
     /**
      * Roles indexed by role id.
      */
-    private var roles: MutableMap<UUID?, Role?>? = HashMap<UUID?, Role?>()
+    private var roles: MutableMap<UUID?, Role?>? = HashMap()
 
     /**
      * Player-to-role assignment map.
      */
-    private var playerToRole: MutableMap<UUID?, UUID?>? = HashMap<UUID?, UUID?>()
+    private var playerToRole: MutableMap<UUID?, UUID?>? = HashMap()
 
     /**
      * Fallback role id used for unassigned players.

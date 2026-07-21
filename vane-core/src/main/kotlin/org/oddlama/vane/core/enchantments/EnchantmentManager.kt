@@ -45,10 +45,7 @@ class EnchantmentManager(context: Context<Core?>?) : Listener<Core?>(context) {
 
     /** Returns whether a component line is recognized as enchantment lore. */
     private fun isEnchantmentLore(component: Component?): Boolean {
-        if (component is TranslatableComponent && component.key().startsWith("vane_enchantments.")) {
-            return true
-        }
-        return ItemUtil.hasSentinel(component, SENTINEL)
+        return component is TranslatableComponent && component.key().startsWith("vane_enchantments.") || ItemUtil.hasSentinel(component, SENTINEL)
     }
 
     /** Normalizes result item lore after result-producing inventory edits. */

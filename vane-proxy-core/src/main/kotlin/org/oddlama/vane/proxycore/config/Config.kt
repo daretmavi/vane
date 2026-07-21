@@ -44,7 +44,7 @@ class Config(file: File) {
             val port = value.getInt("Port")
             require(port !in registeredPorts) { "Multiplexer ID '$keyString' uses an already registered port!" }
 
-            val multiplexer = AuthMultiplex(port, value.get<MutableList<String?>?>("AllowedUuids"))
+            val multiplexer = AuthMultiplex(port, value.get("AllowedUuids"))
 
             registeredPorts.add(multiplexer.port)
             authMultiplex[key] = multiplexer

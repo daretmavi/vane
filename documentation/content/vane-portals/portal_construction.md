@@ -8,11 +8,11 @@ module = "vane-portals"
 
 Before you can build a portal, you need to gather the following materials:
 
-| Item | Amount | Description |
-|------|--------|-------------|
-| {{ item:minecraft:enchanting_table }} | 1 | Portal console |
-| {{ item:minecraft:netherite_block }} | 1 | Origin block |
-| {{ item:minecraft:lever }} | 1 | A switch |
+| Item                                                                                                                                                                         | Amount  | Description         |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------|---------------------|
+| {{ item:minecraft:enchanting_table }}                                                                                                                                        | 1       | Portal console      |
+| {{ item:minecraft:netherite_block }}                                                                                                                                         | 1       | Origin block        |
+| {{ item:minecraft:lever }}                                                                                                                                                   | 1       | A switch            |
 | {{ item:minecraft:obsidian }} {{ item:minecraft:crying_obsidian }} {{ item:minecraft:gold_block }} {{ item:minecraft:gilded_blackstone }} {{ item:minecraft:emerald_block }} | Several | Portal frame blocks |
 
 The portal frame may be built from any of the boundary blocks.

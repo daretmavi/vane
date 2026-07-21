@@ -95,7 +95,7 @@ object ItemUtil {
             meta.lore(lore.map { it!!.decoration(TextDecoration.ITALIC, false) })
         }
 
-        item.setItemMeta(meta)
+        item.itemMeta = meta
         return item
     }
 
@@ -185,7 +185,7 @@ object ItemUtil {
             .color(NamedTextColor.YELLOW)
         meta.displayName(nameComponent)
         meta.playerProfile = profile
-        item.setItemMeta(meta)
+        item.itemMeta = meta
         return item
     }
 
@@ -199,11 +199,7 @@ object ItemUtil {
         val hover = component.hoverEvent() ?: return false
 
         val hoverText = hover.value()
-        return if (hoverText is TextComponent) {
-            hover.action() == HoverEvent.Action.SHOW_TEXT && sentinel.toString() == hoverText.content()
-        } else {
-            false
-        }
+        return hoverText is TextComponent && hover.action() == HoverEvent.Action.SHOW_TEXT && sentinel.toString() == hoverText.content()
     }
 
     /** Adds a hover sentinel marker to a component. */
@@ -296,7 +292,7 @@ object ItemUtil {
 
         // If there is no NBT information, we can return here.
         if (nbtDelim == -1) {
-            return Pair.of<ItemStack?, Boolean?>(
+            return Pair.of(
                 applyEnchants(itemStack!!, enchants),
                 emat.isSimpleMaterial && enchants == null
             )
@@ -314,7 +310,7 @@ object ItemUtil {
             val nmsItem = itemHandle(itemStack)!!.copy()
             nmsItem.applyComponents(parsedNbt)
 
-            return Pair.of<ItemStack?, Boolean?>(applyEnchants(CraftItemStack.asCraftMirror(nmsItem), enchants), false)
+            return Pair.of(applyEnchants(CraftItemStack.asCraftMirror(nmsItem), enchants), false)
         } catch (e: CommandSyntaxException) {
             throw IllegalArgumentException("Could not parse NBT of item definition: $definition", e)
         }

@@ -81,8 +81,7 @@ class RegionExtent {
     fun isInside(loc: Location): Boolean {
         val l = min() ?: return false
         val h = max() ?: return false
-        if (loc.world != l.world) return false
-        return loc.x >= l.x && loc.x < (h.x + 1) &&
+        return loc.world == l.world && loc.x >= l.x && loc.x < (h.x + 1) &&
                 loc.y >= l.y && loc.y < (h.y + 1) &&
                 loc.z >= l.z && loc.z < (h.z + 1)
     }
@@ -93,8 +92,7 @@ class RegionExtent {
     fun isInside(block: Block): Boolean {
         val l = min() ?: return false
         val h = max() ?: return false
-        if (block.world != l.world) return false
-        return block.x >= l.x && block.x <= h.x &&
+        return block.world == l.world && block.x >= l.x && block.x <= h.x &&
                 block.y >= l.y && block.y <= h.y &&
                 block.z >= l.z && block.z <= h.z
     }

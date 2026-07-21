@@ -124,7 +124,7 @@ abstract class Module<T : Module<T?>?> : JavaPlugin(), Context<T?>, Listener {
     var configMetricsEnabled: Boolean = false
 
     /** Root context group for this module. */
-    private val contextGroup: ModuleGroup<T?> = ModuleGroup<T?>(
+    private val contextGroup: ModuleGroup<T?> = ModuleGroup(
         this,
         "",
         "The module will only add functionality if this is set to true.",
@@ -312,8 +312,7 @@ abstract class Module<T : Module<T?>?> : JavaPlugin(), Context<T?>, Listener {
     /** Tries to reload module configuration from disk. */
     private fun tryReloadConfiguration(): Boolean {
         val file = configManager.standardFile()
-        if (!file.exists() && !configManager.generateFile(file, null)) return false
-        return configManager.reload(file)
+        return !(!file.exists() && !configManager.generateFile(file, null)) && configManager.reload(file)
     }
 
     /** Updates a localized language file from embedded resources when newer. */

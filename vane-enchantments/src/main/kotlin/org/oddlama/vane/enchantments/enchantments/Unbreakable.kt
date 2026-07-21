@@ -74,7 +74,7 @@ class Unbreakable(context: Context<Enchantments?>) : CustomEnchantment<Enchantme
         meta.isUnbreakable = true
         // Also hide the internal unbreakable tag on the client
         meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE)
-        item.setItemMeta(meta)
+        item.itemMeta = meta
 
         // Prevent damage
         event.damage = 0

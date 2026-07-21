@@ -45,7 +45,7 @@ class ProxyGameProfileRequestListener(private val velocity: Velocity) {
         }
 
         val tamperedProfile = GameProfile(player.newUuid, player.newName, profile.properties)
-        event.setGameProfile(tamperedProfile)
+        event.gameProfile = tamperedProfile
 
         val server = getServerForHost(velocity.rawProxy, virtualHost)
         val serverInfo = VelocityCompatServerInfo(server)

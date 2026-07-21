@@ -103,8 +103,8 @@ interface Param {
             SentinelExecutorParam<Function1<T1?, Boolean?>?>(
                 command,
                 f,
-                Function1 { requirePlayer(it) },
-                Function1 { it == 0 })
+                { requirePlayer(it) },
+                { it == 0 })
         )
     }
 
@@ -114,8 +114,8 @@ interface Param {
             SentinelExecutorParam<Function2<T1?, T2?, Boolean?>?>(
                 command,
                 f,
-                Function1 { requirePlayer(it) },
-                Function1 { it == 0 })
+                { requirePlayer(it) },
+                { it == 0 })
         )
     }
 
@@ -125,8 +125,8 @@ interface Param {
             SentinelExecutorParam<Function3<T1?, T2?, T3?, Boolean?>?>(
                 command,
                 f,
-                Function1 { requirePlayer(it) },
-                Function1 { it == 0 })
+                { requirePlayer(it) },
+                { it == 0 })
         )
     }
 
@@ -136,8 +136,8 @@ interface Param {
             SentinelExecutorParam<Function4<T1?, T2?, T3?, T4?, Boolean?>?>(
                 command,
                 f,
-                Function1 { requirePlayer(it) },
-                Function1 { it == 0 })
+                { requirePlayer(it) },
+                { it == 0 })
         )
     }
 
@@ -147,8 +147,8 @@ interface Param {
             SentinelExecutorParam<Function5<T1?, T2?, T3?, T4?, T5?, Boolean?>?>(
                 command,
                 f,
-                Function1 { requirePlayer(it) },
-                Function1 { it == 0 })
+                { requirePlayer(it) },
+                { it == 0 })
         )
     }
 
@@ -158,8 +158,8 @@ interface Param {
             SentinelExecutorParam<Function6<T1?, T2?, T3?, T4?, T5?, T6?, Boolean?>?>(
                 command,
                 f,
-                Function1 { requirePlayer(it) },
-                Function1 { it == 0 })
+                { requirePlayer(it) },
+                { it == 0 })
         )
     }
 
@@ -228,17 +228,17 @@ interface Param {
 
     /** Adds an unconstrained argument parameter converted via [fromString]. */
     fun <T> any(argumentType: String, fromString: Function1<String?, out T?>): AnyParam<out T?> {
-        val p = AnyParam<T?>(this.command, argumentType, fromString)
+        val p = AnyParam(this.command, argumentType, fromString)
         addParam(p)
         return p
     }
 
     /** Adds a fixed string literal parameter. */
-    fun fixed(fixed: String?): FixedParam<String?> = fixed<String?>(fixed) { str -> str }
+    fun fixed(fixed: String?): FixedParam<String?> = fixed(fixed) { str -> str }
 
     /** Adds a fixed literal parameter. */
-    fun <T> fixed(fixed: T?, toString: Function1<T?, String?>): FixedParam<T?> {
-        val p = FixedParam<T?>(this.command, fixed, toString)
+    fun <T> fixed(fixed: T?, toString: Function1<T?, String?>): FixedParam<T> {
+        val p = FixedParam(this.command, fixed, toString)
         addParam(p)
         return p
     }
@@ -251,8 +251,8 @@ interface Param {
         argumentType: String,
         choices: Collection<T?>,
         toString: Function1<T?, String?>
-    ): ChoiceParam<T?> {
-        val p = ChoiceParam<T?>(this.command, argumentType, choices, toString)
+    ): ChoiceParam<T> {
+        val p = ChoiceParam(this.command, argumentType, choices, toString)
         addParam(p)
         return p
     }
@@ -264,7 +264,7 @@ interface Param {
         toString: Function2<CommandSender?, T?, String?>,
         fromString: Function2<CommandSender?, String?, out T?>
     ): DynamicChoiceParam<T?> {
-        val p = DynamicChoiceParam<T?>(this.command, argumentType, choices, toString, fromString)
+        val p = DynamicChoiceParam(this.command, argumentType, choices, toString, fromString)
         addParam(p)
         return p
     }
@@ -273,8 +273,8 @@ interface Param {
     fun chooseModule(): DynamicChoiceParam<Module<*>?> {
         return choice<Module<*>?>(
             "module",
-            Function1 { _ -> this.command!!.module!!.core?.modules ?: mutableSetOf<Module<*>>() },
-            Function2 { _, m -> m!!.annotationName },
+            { _ -> this.command!!.module!!.core?.modules ?: mutableSetOf<Module<*>>() },
+            { _, m -> m!!.annotationName },
             Function2 { _, str ->
                 val core = this.command!!.module!!.core ?: return@Function2 null
                 core.modules.firstOrNull { it?.annotationName.equals(str, ignoreCase = true) }

@@ -260,11 +260,7 @@ class ConsoleMenu(context: Context<Portals?>) : ModuleComponent<Portals?>(contex
 
                 val filter = Filter.StringFilter({ p: Portal?, str: String? ->
                     val pname = p?.name()
-                    if (pname == null || str == null) {
-                        false
-                    } else {
-                        pname.lowercase(Locale.getDefault()).contains(str)
-                    }
+                    !(pname == null || str == null) && pname.lowercase(Locale.getDefault()).contains(str)
                 })
                 MenuFactory.genericSelector<Portal?, Filter.StringFilter<Portal?>?>(
                     getContext()!!,

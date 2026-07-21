@@ -98,7 +98,7 @@ class Enchant(context: Context<Core?>) : org.oddlama.vane.core.command.Command<C
             if (itemStack.type == Material.ENCHANTED_BOOK) {
                 val meta = itemStack.itemMeta as EnchantmentStorageMeta
                 meta.addStoredEnchant(enchantment, level, false)
-                itemStack.setItemMeta(meta)
+                itemStack.itemMeta = meta
             } else {
                 itemStack.addEnchantment(enchantment, level)
             }

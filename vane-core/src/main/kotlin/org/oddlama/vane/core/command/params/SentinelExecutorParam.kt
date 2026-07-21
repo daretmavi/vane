@@ -78,9 +78,7 @@ class SentinelExecutorParam<T> @JvmOverloads constructor(
 
         checkSignature(method, parsedArgs)
 
-        if (checkRequirements.apply(sender) != true) return false
-
-        return try {
+        return checkRequirements.apply(sender) == true && try {
             val result = (function as ErasedFunctor).invoke(parsedArgs)
             result == null || result as? Boolean == true
         } catch (e: Exception) {

@@ -154,7 +154,7 @@ class Soulbound(context: Context<Enchantments?>) : CustomEnchantment<Enchantment
                 // Dropped too slowly, refresh and cancel
                 val meta = event.cursor.itemMeta
                 dropCooldown.checkOrUpdateCooldown(meta)
-                event.cursor.setItemMeta(meta)
+                event.cursor.itemMeta = meta
                 langDropCooldown?.sendActionBar(event.whoClicked)
                 event.result = Event.Result.DENY
                 return
@@ -179,7 +179,7 @@ class Soulbound(context: Context<Enchantments?>) : CustomEnchantment<Enchantment
             if (!tooSlow) {
                 val meta = droppedItem.itemMeta
                 dropCooldown.clear(meta)
-                droppedItem.setItemMeta(meta)
+                droppedItem.itemMeta = meta
                 langDroppedNotification?.send(event.player, droppedItem.displayName())
                 return
             }

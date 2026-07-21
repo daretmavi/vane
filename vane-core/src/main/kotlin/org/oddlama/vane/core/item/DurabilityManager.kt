@@ -143,10 +143,13 @@ class DurabilityManager(context: Context<Core?>?) : Listener<Core?>(context) {
         /**
          * Writes max damage and current damage to item meta.
          */
-        fun setDamageAndMaxDamage(customItem: CustomItem, item: ItemStack, damage: Int): Boolean =
-            item.editMeta(Damageable::class.java) { meta ->
-                meta.setMaxDamage(if (customItem.durability() != 0) customItem.durability() else item.type.maxDurability.toInt())
-                meta.damage = damage
+        fun setDamageAndMaxDamage(customItem: CustomItem, item: ItemStack, damage: Int): Boolean {
+            val newMaxDamage = if (customItem.durability() != 0) customItem.durability() else item.type.maxDurability.toInt()
+            return item.editMeta(Damageable::class.java) { meta ->
+                // Store durability metadata in persistent data for custom tracking
+                meta.persistentDataContainer.set(ITEM_DURABILITY_MAX, PersistentDataType.INTEGER, newMaxDamage)
+                meta.persistentDataContainer.set(ITEM_DURABILITY_DAMAGE, PersistentDataType.INTEGER, damage)
             }
+        }
     }
 }

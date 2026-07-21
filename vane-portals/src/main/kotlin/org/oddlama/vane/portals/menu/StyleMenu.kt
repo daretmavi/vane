@@ -694,7 +694,7 @@ class StyleMenu(context: Context<Portals?>) : ModuleComponent<Portals?>(context.
             itemSelectDefined.item()
         ) { player: Player?, menu: Menu?, _: MenuItem? ->
             menu!!.close(player!!)
-            val allStyles: ArrayList<Style?> = ArrayList<Style?>(module!!.styles.values)
+            val allStyles: ArrayList<Style?> = ArrayList(module!!.styles.values)
             val filter = Filter.StringFilter({ s: Style?, str: String? ->
                 s!!.key().toString().lowercase(
                     Locale.getDefault()

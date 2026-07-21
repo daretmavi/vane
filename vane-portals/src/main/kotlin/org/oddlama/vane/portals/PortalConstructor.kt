@@ -185,7 +185,7 @@ class PortalConstructor(context: Context<Portals?>?) : Listener<Portals?>(contex
     var langTargetUseRestricted: TranslatedMessage? = null
 
     /** All materials accepted as boundary/origin during detection. */
-    private val portalBoundaryBuildMaterials: MutableSet<Material?> = HashSet<Material?>()
+    private val portalBoundaryBuildMaterials: MutableSet<Material?> = HashSet()
 
     /** Per-player pending console awaiting boundary click. */
     private val pendingConsole = HashMap<UUID?, Block?>()

@@ -152,7 +152,7 @@ class Regions : Module<Regions?>() {
     /**
      * Active in-memory index of loaded regions by id.
      */
-    private val regions: MutableMap<UUID?, Region?> = HashMap<UUID?, Region?>()
+    private val regions: MutableMap<UUID?, Region?> = HashMap()
 
     // Primary persistent storage for all region groups (`regionGroup.id -> regionGroup`).
     @Persistent
@@ -166,7 +166,7 @@ class Regions : Module<Regions?>() {
     /**
      * Persistent default region-group mapping per player.
      */
-    private val storageDefaultRegionGroup: MutableMap<UUID?, UUID?> = HashMap<UUID?, UUID?>()
+    private val storageDefaultRegionGroup: MutableMap<UUID?, UUID?> = HashMap()
 
     // Per-chunk lookup cache (`worldId -> chunkKey -> possible regions`).
     /**
@@ -798,7 +798,7 @@ class Regions : Module<Regions?>() {
         )
 
         // Convert regions from legacy storage
-        val removeFromLegacyStorage: MutableSet<UUID?> = HashSet<UUID?>()
+        val removeFromLegacyStorage: MutableSet<UUID?> = HashSet()
         var converted = 0
         for (region in storageRegions.values) {
             if (region.extent()!!.world() != world.uid) {

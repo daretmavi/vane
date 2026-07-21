@@ -111,7 +111,7 @@ class ChestSorter(context: Context<Trifles?>) :
 
         // Sort the merged contents for a stable storage layout.
         val contents = inventory.storageContents
-        Arrays.sort<ItemStack?>(contents, ItemUtil.ItemStackComparator())
+        Arrays.sort(contents, ItemUtil.ItemStackComparator())
         inventory.storageContents = contents
     }
 

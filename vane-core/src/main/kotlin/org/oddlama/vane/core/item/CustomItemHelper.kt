@@ -36,10 +36,8 @@ object CustomItemHelper {
             val data = meta.persistentDataContainer
             data.set(CUSTOM_ITEM_IDENTIFIER, PersistentDataType.STRING, customItem.key().toString())
             data.set(CUSTOM_ITEM_VERSION, PersistentDataType.INTEGER, customItem.version())
-            val customModelDataComponent = meta.customModelDataComponent
-            customModelDataComponent.floats = listOf(customItem.customModelData().toFloat())
-            meta.setCustomModelDataComponent(customModelDataComponent)
-            meta.setItemModel(customItem.itemModel())
+            meta.customModelDataComponent.floats = listOf(customItem.customModelData().toFloat())
+            meta.itemModel = customItem.itemModel()
         }
 
         DurabilityManager.initializeOrUpdateMax(customItem, itemStack)
@@ -64,7 +62,7 @@ object CustomItemHelper {
 
         val parts: Array<String?> = key.split(":".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
         check(parts.size == 2) { "Invalid namespaced key '$key'" }
-        return Pair.of<NamespacedKey?, Int?>(namespacedKey(parts[0]!!, parts[1]!!), version)
+        return Pair.of(namespacedKey(parts[0]!!, parts[1]!!), version)
     }
 
     /**
@@ -111,8 +109,7 @@ object CustomItemHelper {
      */
     @JvmStatic
     fun convertExistingStack(customItem: CustomItem, itemStack: ItemStack): ItemStack {
-        var itemStack = itemStack
-        itemStack = itemStack.clone().withType(customItem.baseMaterial())
-        return updateItemStack(customItem, itemStack)
+        val converted = itemStack.clone().withType(customItem.baseMaterial())
+        return updateItemStack(customItem, converted)
     }
 }
