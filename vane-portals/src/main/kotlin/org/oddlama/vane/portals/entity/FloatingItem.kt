@@ -1,6 +1,7 @@
 package org.oddlama.vane.portals.entity
 
 import net.minecraft.world.entity.EntityType
+import net.minecraft.world.entity.EntityTypes
 import net.minecraft.world.entity.item.ItemEntity
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.level.Level
@@ -24,7 +25,7 @@ class FloatingItem(entitytypes: EntityType<out ItemEntity>, world: Level) : Item
     constructor(location: Location) : this(location.world, location.x, location.y, location.z)
 
     /** Creates a floating item in [world] at exact coordinates. */
-    constructor(world: World, x: Double, y: Double, z: Double) : this(EntityType.ITEM, Nms.worldHandle(world)) {
+    constructor(world: World, x: Double, y: Double, z: Double) : this(EntityTypes.ITEM, Nms.worldHandle(world)) {
         setPos(x, y, z)
     }
 

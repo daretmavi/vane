@@ -1,7 +1,7 @@
 package org.oddlama.vane.trifles.items
 
 import net.kyori.adventure.text.Component
-import net.minecraft.advancements.CriteriaTriggers
+import net.minecraft.advancements.triggers.CriteriaTriggers
 import net.minecraft.core.BlockPos
 import net.minecraft.network.protocol.game.ClientboundBlockUpdatePacket
 import net.minecraft.sounds.SoundSource
