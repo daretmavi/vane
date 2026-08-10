@@ -268,3 +268,12 @@ tasks.register<Delete>("cleanWorld") {
 repositories {
     mavenCentral()
 }
+
+subprojects {
+    tasks.withType<Jar>().configureEach {
+        if (name == "shadowJar") {
+            duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+            exclude("META-INF/*.kotlin_module")
+        }
+    }
+}
