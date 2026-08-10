@@ -3,7 +3,7 @@ package org.oddlama.velocity.compat
 import com.velocitypowered.api.proxy.Player
 import net.kyori.adventure.text.Component
 import org.oddlama.vane.proxycore.ProxyPlayer
-import java.util.UUID
+import java.util.*
 
 /**
  * Velocity implementation of the proxy-core player abstraction.

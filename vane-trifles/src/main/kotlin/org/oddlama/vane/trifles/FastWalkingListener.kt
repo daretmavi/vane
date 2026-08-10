@@ -2,9 +2,9 @@ package org.oddlama.vane.trifles
 
 import io.papermc.paper.event.entity.EntityMoveEvent
 import net.minecraft.world.entity.monster.Monster
+import org.bukkit.Location
 import org.bukkit.entity.EntityType
 import org.bukkit.entity.LivingEntity
-import org.bukkit.Location
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.player.PlayerMoveEvent

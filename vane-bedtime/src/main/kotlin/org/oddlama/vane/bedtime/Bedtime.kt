@@ -16,7 +16,7 @@ import org.oddlama.vane.core.lang.TranslatedMessage
 import org.oddlama.vane.core.module.Module
 import org.oddlama.vane.util.Nms
 import org.oddlama.vane.util.WorldUtil
-import java.util.UUID
+import java.util.*
 import kotlin.math.ceil
 
 @VaneModule(name = "bedtime", bstats = 8639, configVersion = 3, langVersion = 5, storageVersion = 1)

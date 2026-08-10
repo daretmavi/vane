@@ -8,6 +8,7 @@ import org.oddlama.vane.annotation.config.ConfigExtendedMaterial
 import org.oddlama.vane.annotation.config.ConfigInt
 import org.oddlama.vane.annotation.lang.LangMessage
 import org.oddlama.vane.annotation.lang.LangMessageArray
+import org.oddlama.vane.core.functional.Consumer1
 import org.oddlama.vane.core.lang.TranslatedMessage
 import org.oddlama.vane.core.lang.TranslatedMessageArray
 import org.oddlama.vane.core.material.ExtendedMaterial
@@ -15,7 +16,6 @@ import org.oddlama.vane.core.material.ExtendedMaterial.Companion.from
 import org.oddlama.vane.core.module.Context
 import org.oddlama.vane.core.module.Module
 import org.oddlama.vane.core.module.ModuleComponent
-import org.oddlama.vane.core.functional.Consumer1
 import org.oddlama.vane.util.ItemUtil
 
 /**

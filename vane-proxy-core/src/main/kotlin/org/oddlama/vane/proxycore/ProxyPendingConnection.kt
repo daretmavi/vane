@@ -1,7 +1,7 @@
 package org.oddlama.vane.proxycore
 
 import java.net.SocketAddress
-import java.util.UUID
+import java.util.*
 
 /**
  * Represents a login connection before the player is fully connected.

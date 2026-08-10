@@ -16,9 +16,9 @@ import org.oddlama.vane.core.config.recipes.ShapedRecipeDefinition
 import org.oddlama.vane.core.enchantments.CustomEnchantment
 import org.oddlama.vane.core.module.Context
 import org.oddlama.vane.enchantments.Enchantments
-import org.oddlama.vane.util.msToTicks
 import org.oddlama.vane.util.ItemUtil
 import org.oddlama.vane.util.PlayerUtil
+import org.oddlama.vane.util.msToTicks
 
 /**
  * Wings enchantment class that provides elytra flying boosts.

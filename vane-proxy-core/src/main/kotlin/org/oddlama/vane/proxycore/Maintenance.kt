@@ -2,11 +2,7 @@ package org.oddlama.vane.proxycore
 
 import org.oddlama.vane.proxycore.scheduler.ProxyScheduledTask
 import org.oddlama.vane.proxycore.util.formatTime
-import java.io.BufferedReader
-import java.io.File
-import java.io.FileReader
-import java.io.FileWriter
-import java.io.IOException
+import java.io.*
 import java.util.concurrent.TimeUnit
 import java.util.logging.Level
 

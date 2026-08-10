@@ -7,8 +7,8 @@ import org.oddlama.vane.core.YamlLoadException
 import org.oddlama.vane.util.MaterialUtil.materialFrom
 import org.oddlama.vane.util.StorageUtil.namespacedKey
 import java.lang.reflect.Field
-import java.util.Comparator.nullsFirst
 import java.util.Comparator.naturalOrder
+import java.util.Comparator.nullsFirst
 
 /**
  * Config field handler for nested string-to-string-to-string-to-material maps.

@@ -3,8 +3,8 @@ package org.oddlama.velocity.compat
 import com.velocitypowered.api.proxy.server.ServerPing
 import com.velocitypowered.api.util.Favicon
 import net.kyori.adventure.text.Component
-import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer
 import net.kyori.adventure.text.minimessage.MiniMessage
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer
 import org.oddlama.vane.proxycore.listeners.ProxyServerPing
 
 /**
@@ -39,6 +39,7 @@ class VelocityCompatProxyServerPing(ping: ServerPing) : ProxyServerPing {
                     LegacyComponentSerializer.legacySection().deserialize(s)
                 }
             }
+
             s.contains('\u00A7') -> LegacyComponentSerializer.legacySection().deserialize(s)
             s.contains('&') -> LegacyComponentSerializer.legacyAmpersand().deserialize(s)
             else -> Component.text(s)

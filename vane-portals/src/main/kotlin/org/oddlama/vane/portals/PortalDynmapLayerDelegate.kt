@@ -1,12 +1,12 @@
 package org.oddlama.vane.portals
 
-import org.dynmap.DynmapCommonAPI
 // ...existing imports...
-import org.oddlama.vane.core.dynmap.DynmapIntegration
+import org.dynmap.DynmapCommonAPI
 import org.dynmap.markers.Marker
 import org.dynmap.markers.MarkerAPI
 import org.dynmap.markers.MarkerIcon
 import org.dynmap.markers.MarkerSet
+import org.oddlama.vane.core.dynmap.DynmapIntegration
 import org.oddlama.vane.portals.portal.Portal
 import java.util.*
 

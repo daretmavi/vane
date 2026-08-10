@@ -20,13 +20,6 @@ import org.oddlama.vane.util.BlockUtil
 import org.oddlama.vane.util.LazyLocation
 import java.io.IOException
 import java.util.*
-import kotlin.Any
-import kotlin.Boolean
-import kotlin.Comparator
-import kotlin.Int
-import kotlin.RuntimeException
-import kotlin.String
-import kotlin.Throws
 
 /**
  * Persistent portal model containing ownership, geometry, style, and targeting state.

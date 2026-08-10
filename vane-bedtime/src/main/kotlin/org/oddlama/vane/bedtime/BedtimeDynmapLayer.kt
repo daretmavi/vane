@@ -8,7 +8,7 @@ import org.oddlama.vane.annotation.lang.LangMessage
 import org.oddlama.vane.core.lang.TranslatedMessage
 import org.oddlama.vane.core.module.Context
 import org.oddlama.vane.core.module.ModuleComponent
-import java.util.UUID
+import java.util.*
 
 /**
  * Configurable Dynmap layer for bedtime spawn markers.

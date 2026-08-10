@@ -276,7 +276,12 @@ class RegionRoleSettingEnforcer(context: Context<Regions?>?) : Listener<Regions?
     private fun checkContainerSettingAt(inventory: org.bukkit.inventory.Inventory, player: Player): Boolean {
         val location = inventory.location ?: return false
         val holder = inventory.holder ?: return false
-        return !(holder !is DoubleChest && holder !is Container && holder !is Minecart) && checkSettingAt(location, player, RoleSetting.CONTAINER, false)
+        return !(holder !is DoubleChest && holder !is Container && holder !is Minecart) && checkSettingAt(
+            location,
+            player,
+            RoleSetting.CONTAINER,
+            false
+        )
         // Inventory is virtual / transient
     }
 

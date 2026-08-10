@@ -2,7 +2,7 @@ package org.oddlama.vane.regions.region
 
 import org.json.JSONObject
 import org.oddlama.vane.core.persistent.PersistentSerializer
-import java.util.UUID
+import java.util.*
 
 /**
  * JSON key used for serialized UUID id fields.

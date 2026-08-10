@@ -10,7 +10,7 @@ import org.bukkit.inventory.ItemStack
 import org.oddlama.vane.core.item.CustomItemHelper.convertExistingStack
 import org.oddlama.vane.core.item.CustomItemHelper.newStack
 import org.oddlama.vane.core.item.api.CustomItemRegistry.Companion.instance
-import java.util.EnumSet
+import java.util.*
 
 /**
  * This is the CustomItem specification that all custom items must implement to be registered with

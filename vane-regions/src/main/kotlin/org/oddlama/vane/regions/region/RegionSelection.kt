@@ -1,8 +1,8 @@
 package org.oddlama.vane.regions.region
 
+import org.bukkit.Material
 import org.bukkit.block.Block
 import org.bukkit.entity.Player
-import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 import org.oddlama.vane.regions.Regions
 import org.oddlama.vane.util.PlayerUtil

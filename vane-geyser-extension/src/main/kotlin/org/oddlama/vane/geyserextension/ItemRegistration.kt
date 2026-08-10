@@ -48,8 +48,9 @@ object ItemRegistration {
                 Identifier.of("vane_enchantments:item/ancient_tome"),
                 Identifier.of("vane_enchantments:ancient_tome")
             )
-                .bedrockOptions(CustomItemBedrockOptions.builder()
-                    .icon("vane_enchantments.item_ancient_tome")
+                .bedrockOptions(
+                    CustomItemBedrockOptions.builder()
+                        .icon("vane_enchantments.item_ancient_tome")
                 )
                 .build()
         )
@@ -61,8 +62,9 @@ object ItemRegistration {
                 Identifier.of("vane_enchantments:item/enchanted_ancient_tome"),
                 Identifier.of("vane_enchantments:enchanted_ancient_tome"),
             )
-                .bedrockOptions(CustomItemBedrockOptions.builder()
-                    .icon("vane_enchantments.item_enchanted_ancient_tome")
+                .bedrockOptions(
+                    CustomItemBedrockOptions.builder()
+                        .icon("vane_enchantments.item_enchanted_ancient_tome")
                 )
                 .build()
         )
@@ -74,8 +76,9 @@ object ItemRegistration {
                 Identifier.of("vane_enchantments:item/ancient_tome_of_knowledge"),
                 Identifier.of("vane_enchantments:ancient_tome_of_knowledge")
             )
-                .bedrockOptions(CustomItemBedrockOptions.builder()
-                    .icon("vane_enchantments.item_ancient_tome_of_knowledge")
+                .bedrockOptions(
+                    CustomItemBedrockOptions.builder()
+                        .icon("vane_enchantments.item_ancient_tome_of_knowledge")
                 )
                 .build()
         )
@@ -87,8 +90,9 @@ object ItemRegistration {
                 Identifier.of("vane_enchantments:item/enchanted_ancient_tome_of_knowledge"),
                 Identifier.of("vane_enchantments:enchanted_ancient_tome_of_knowledge")
             )
-                .bedrockOptions(CustomItemBedrockOptions.builder()
-                    .icon("vane_enchantments.item_enchanted_ancient_tome_of_knowledge")
+                .bedrockOptions(
+                    CustomItemBedrockOptions.builder()
+                        .icon("vane_enchantments.item_enchanted_ancient_tome_of_knowledge")
                 )
                 .build()
         )
@@ -100,8 +104,9 @@ object ItemRegistration {
                 Identifier.of("vane_enchantments:item/ancient_tome_of_the_gods"),
                 Identifier.of("vane_enchantments:ancient_tome_of_the_gods")
             )
-                .bedrockOptions(CustomItemBedrockOptions.builder()
-                    .icon("vane_enchantments.item_ancient_tome_of_the_gods")
+                .bedrockOptions(
+                    CustomItemBedrockOptions.builder()
+                        .icon("vane_enchantments.item_ancient_tome_of_the_gods")
                 )
                 .build()
         )
@@ -113,8 +118,9 @@ object ItemRegistration {
                 Identifier.of("vane_enchantments:item/enchanted_ancient_tome_of_the_gods"),
                 Identifier.of("vane_enchantments:enchanted_ancient_tome_of_the_gods")
             )
-                .bedrockOptions(CustomItemBedrockOptions.builder()
-                    .icon("vane_enchantments.item_enchanted_ancient_tome_of_the_gods")
+                .bedrockOptions(
+                    CustomItemBedrockOptions.builder()
+                        .icon("vane_enchantments.item_enchanted_ancient_tome_of_the_gods")
                 )
                 .build()
         )
@@ -127,8 +133,9 @@ object ItemRegistration {
                 Identifier.of("vane_trifles:item/wooden_sickle"),
                 Identifier.of("vane_trifles:wooden_sickle")
             )
-                .bedrockOptions(CustomItemBedrockOptions.builder()
-                    .icon("vane_trifles.item_wooden_sickle")
+                .bedrockOptions(
+                    CustomItemBedrockOptions.builder()
+                        .icon("vane_trifles.item_wooden_sickle")
                 )
                 .build()
         )
@@ -139,8 +146,9 @@ object ItemRegistration {
                 Identifier.of("vane_trifles:item/stone_sickle"),
                 Identifier.of("vane_trifles:stone_sickle")
             )
-                .bedrockOptions(CustomItemBedrockOptions.builder()
-                    .icon("vane_trifles.item_stone_sickle")
+                .bedrockOptions(
+                    CustomItemBedrockOptions.builder()
+                        .icon("vane_trifles.item_stone_sickle")
                 )
                 .build()
         )
@@ -151,8 +159,9 @@ object ItemRegistration {
                 Identifier.of("vane_trifles:item/iron_sickle"),
                 Identifier.of("vane_trifles:iron_sickle")
             )
-                .bedrockOptions(CustomItemBedrockOptions.builder()
-                    .icon("vane_trifles.item_iron_sickle")
+                .bedrockOptions(
+                    CustomItemBedrockOptions.builder()
+                        .icon("vane_trifles.item_iron_sickle")
                 )
                 .build()
         )
@@ -163,8 +172,9 @@ object ItemRegistration {
                 Identifier.of("vane_trifles:item/golden_sickle"),
                 Identifier.of("vane_trifles:golden_sickle")
             )
-                .bedrockOptions(CustomItemBedrockOptions.builder()
-                    .icon("vane_trifles.item_golden_sickle")
+                .bedrockOptions(
+                    CustomItemBedrockOptions.builder()
+                        .icon("vane_trifles.item_golden_sickle")
                 )
                 .build()
         )
@@ -175,8 +185,9 @@ object ItemRegistration {
                 Identifier.of("vane_trifles:item/diamond_sickle"),
                 Identifier.of("vane_trifles:diamond_sickle")
             )
-                .bedrockOptions(CustomItemBedrockOptions.builder()
-                    .icon("vane_trifles.item_diamond_sickle")
+                .bedrockOptions(
+                    CustomItemBedrockOptions.builder()
+                        .icon("vane_trifles.item_diamond_sickle")
                 )
                 .build()
         )
@@ -187,8 +198,9 @@ object ItemRegistration {
                 Identifier.of("vane_trifles:item/netherite_sickle"),
                 Identifier.of("vane_trifles:netherite_sickle")
             )
-                .bedrockOptions(CustomItemBedrockOptions.builder()
-                    .icon("vane_trifles.item_netherite_sickle")
+                .bedrockOptions(
+                    CustomItemBedrockOptions.builder()
+                        .icon("vane_trifles.item_netherite_sickle")
                 )
                 .build()
         )
@@ -200,8 +212,9 @@ object ItemRegistration {
                 Identifier.of("vane_trifles:item/pouch"),
                 Identifier.of("vane_trifles:pouch")
             )
-                .bedrockOptions(CustomItemBedrockOptions.builder()
-                    .icon("vane_trifles.item_pouch")
+                .bedrockOptions(
+                    CustomItemBedrockOptions.builder()
+                        .icon("vane_trifles.item_pouch")
                 )
                 .build()
         )
@@ -213,8 +226,9 @@ object ItemRegistration {
                 Identifier.of("vane_trifles:item/backpack"),
                 Identifier.of("vane_trifles:backpack")
             )
-                .bedrockOptions(CustomItemBedrockOptions.builder()
-                    .icon("vane_trifles.item_backpack")
+                .bedrockOptions(
+                    CustomItemBedrockOptions.builder()
+                        .icon("vane_trifles.item_backpack")
                 )
                 .build()
         )
@@ -226,8 +240,9 @@ object ItemRegistration {
                 Identifier.of("vane_trifles:item/slime_bucket"),
                 Identifier.of("vane_trifles:slime_bucket")
             )
-                .bedrockOptions(CustomItemBedrockOptions.builder()
-                    .icon("vane_trifles.item_slime_bucket")
+                .bedrockOptions(
+                    CustomItemBedrockOptions.builder()
+                        .icon("vane_trifles.item_slime_bucket")
                 )
                 .build()
         )
@@ -238,8 +253,9 @@ object ItemRegistration {
                 Identifier.of("vane_trifles:item/slime_bucket_excited"),
                 Identifier.of("vane_trifles:slime_bucket_excited")
             )
-                .bedrockOptions(CustomItemBedrockOptions.builder()
-                    .icon("vane_trifles.item_slime_bucket_excited")
+                .bedrockOptions(
+                    CustomItemBedrockOptions.builder()
+                        .icon("vane_trifles.item_slime_bucket_excited")
                 )
                 .build()
         )
@@ -251,9 +267,10 @@ object ItemRegistration {
                 Identifier.of("vane_trifles:item/reinforced_elytra"),
                 Identifier.of("vane_trifles:reinforced_elytra")
             )
-                .bedrockOptions(CustomItemBedrockOptions.builder()
-                    .icon("vane_trifles.item_reinforced_elytra")
-                    .protectionValue(6)
+                .bedrockOptions(
+                    CustomItemBedrockOptions.builder()
+                        .icon("vane_trifles.item_reinforced_elytra")
+                        .protectionValue(6)
                 )
                 .component(JavaItemDataComponents.MAX_DAMAGE, 864)
                 .predicate(ItemConditionPredicate.BROKEN.negate())
@@ -266,9 +283,10 @@ object ItemRegistration {
                 Identifier.of("vane_trifles:item/reinforced_elytra.broken"),
                 Identifier.of("vane_trifles:reinforced_elytra")
             )
-                .bedrockOptions(CustomItemBedrockOptions.builder()
-                    .icon("vane_trifles.item_reinforced_elytra.broken")
-                    .protectionValue(6)
+                .bedrockOptions(
+                    CustomItemBedrockOptions.builder()
+                        .icon("vane_trifles.item_reinforced_elytra.broken")
+                        .protectionValue(6)
                 )
                 .component(JavaItemDataComponents.MAX_DAMAGE, 864)
                 .predicate(ItemConditionPredicate.BROKEN)
@@ -282,8 +300,9 @@ object ItemRegistration {
                 Identifier.of("vane_trifles:item/north_compass_16"),
                 Identifier.of("vane_trifles:north_compass")
             )
-                .bedrockOptions(CustomItemBedrockOptions.builder()
-                    .icon("vane_trifles.item_north_compass_16")
+                .bedrockOptions(
+                    CustomItemBedrockOptions.builder()
+                        .icon("vane_trifles.item_north_compass_16")
                 )
                 .build()
         )
@@ -295,8 +314,9 @@ object ItemRegistration {
                 Identifier.of("vane_trifles:item/papyrus_scroll"),
                 Identifier.of("vane_trifles:papyrus_scroll")
             )
-                .bedrockOptions(CustomItemBedrockOptions.builder()
-                    .icon("vane_trifles.item_papyrus_scroll")
+                .bedrockOptions(
+                    CustomItemBedrockOptions.builder()
+                        .icon("vane_trifles.item_papyrus_scroll")
                 )
                 .build()
         )
@@ -308,8 +328,9 @@ object ItemRegistration {
                 Identifier.of("vane_trifles:item/home_scroll"),
                 Identifier.of("vane_trifles:home_scroll")
             )
-                .bedrockOptions(CustomItemBedrockOptions.builder()
-                    .icon("vane_trifles.item_home_scroll")
+                .bedrockOptions(
+                    CustomItemBedrockOptions.builder()
+                        .icon("vane_trifles.item_home_scroll")
                 )
                 .component(JavaItemDataComponents.MAX_DAMAGE, 25)
                 .build()
@@ -320,8 +341,9 @@ object ItemRegistration {
                 Identifier.of("vane_trifles:item/unstable_scroll"),
                 Identifier.of("vane_trifles:unstable_scroll")
             )
-                .bedrockOptions(CustomItemBedrockOptions.builder()
-                    .icon("vane_trifles.item_unstable_scroll")
+                .bedrockOptions(
+                    CustomItemBedrockOptions.builder()
+                        .icon("vane_trifles.item_unstable_scroll")
                 )
                 .component(JavaItemDataComponents.MAX_DAMAGE, 25)
                 .build()
@@ -332,8 +354,9 @@ object ItemRegistration {
                 Identifier.of("vane_trifles:item/file"),
                 Identifier.of("vane_trifles:file")
             )
-                .bedrockOptions(CustomItemBedrockOptions.builder()
-                    .icon("vane_trifles.item_file")
+                .bedrockOptions(
+                    CustomItemBedrockOptions.builder()
+                        .icon("vane_trifles.item_file")
                 )
                 .component(JavaItemDataComponents.MAX_DAMAGE, 4000)
                 .build()
@@ -344,8 +367,9 @@ object ItemRegistration {
                 Identifier.of("vane_trifles:item/trowel"),
                 Identifier.of("vane_trifles:trowel")
             )
-                .bedrockOptions(CustomItemBedrockOptions.builder()
-                    .icon("vane_trifles.item_trowel")
+                .bedrockOptions(
+                    CustomItemBedrockOptions.builder()
+                        .icon("vane_trifles.item_trowel")
                 )
                 .component(JavaItemDataComponents.MAX_DAMAGE, 800)
                 .build()
@@ -356,8 +380,9 @@ object ItemRegistration {
                 Identifier.of("vane_trifles:item/spawn_scroll"),
                 Identifier.of("vane_trifles:spawn_scroll")
             )
-                .bedrockOptions(CustomItemBedrockOptions.builder()
-                    .icon("vane_trifles.item_spawn_scroll")
+                .bedrockOptions(
+                    CustomItemBedrockOptions.builder()
+                        .icon("vane_trifles.item_spawn_scroll")
                 )
                 .component(JavaItemDataComponents.MAX_DAMAGE, 40)
                 .build()
@@ -368,8 +393,9 @@ object ItemRegistration {
                 Identifier.of("vane_trifles:item/lodestone_scroll"),
                 Identifier.of("vane_trifles:lodestone_scroll")
             )
-                .bedrockOptions(CustomItemBedrockOptions.builder()
-                    .icon("vane_trifles.item_lodestone_scroll")
+                .bedrockOptions(
+                    CustomItemBedrockOptions.builder()
+                        .icon("vane_trifles.item_lodestone_scroll")
                 )
                 .component(JavaItemDataComponents.MAX_DAMAGE, 15)
                 .build()
@@ -380,8 +406,9 @@ object ItemRegistration {
                 Identifier.of("vane_trifles:item/death_scroll"),
                 Identifier.of("vane_trifles:death_scroll")
             )
-                .bedrockOptions(CustomItemBedrockOptions.builder()
-                    .icon("vane_trifles.item_death_scroll")
+                .bedrockOptions(
+                    CustomItemBedrockOptions.builder()
+                        .icon("vane_trifles.item_death_scroll")
                 )
                 .component(JavaItemDataComponents.MAX_DAMAGE, 2)
                 .build()
@@ -394,8 +421,9 @@ object ItemRegistration {
                 Identifier.of("vane_trifles:item/empty_xp_bottle"),
                 Identifier.of("vane_trifles:empty_xp_bottle")
             )
-                .bedrockOptions(CustomItemBedrockOptions.builder()
-                    .icon("vane_trifles.item_empty_xp_bottle")
+                .bedrockOptions(
+                    CustomItemBedrockOptions.builder()
+                        .icon("vane_trifles.item_empty_xp_bottle")
                 )
                 .build()
         )
@@ -407,8 +435,9 @@ object ItemRegistration {
                 Identifier.of("vane_trifles:item/small_xp_bottle"),
                 Identifier.of("vane_trifles:small_xp_bottle")
             )
-                .bedrockOptions(CustomItemBedrockOptions.builder()
-                    .icon("vane_trifles.item_small_xp_bottle")
+                .bedrockOptions(
+                    CustomItemBedrockOptions.builder()
+                        .icon("vane_trifles.item_small_xp_bottle")
                 )
                 .build()
         )
@@ -418,8 +447,9 @@ object ItemRegistration {
                 Identifier.of("vane_trifles:item/medium_xp_bottle"),
                 Identifier.of("vane_trifles:medium_xp_bottle")
             )
-                .bedrockOptions(CustomItemBedrockOptions.builder()
-                    .icon("vane_trifles.item_medium_xp_bottle")
+                .bedrockOptions(
+                    CustomItemBedrockOptions.builder()
+                        .icon("vane_trifles.item_medium_xp_bottle")
                 )
                 .build()
         )
@@ -429,8 +459,9 @@ object ItemRegistration {
                 Identifier.of("vane_trifles:item/large_xp_bottle"),
                 Identifier.of("vane_trifles:large_xp_bottle")
             )
-                .bedrockOptions(CustomItemBedrockOptions.builder()
-                    .icon("vane_trifles.item_large_xp_bottle")
+                .bedrockOptions(
+                    CustomItemBedrockOptions.builder()
+                        .icon("vane_trifles.item_large_xp_bottle")
                 )
                 .build()
         )

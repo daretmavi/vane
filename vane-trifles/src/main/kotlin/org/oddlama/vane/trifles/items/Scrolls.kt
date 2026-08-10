@@ -15,10 +15,10 @@ import org.oddlama.vane.core.item.api.CustomItem
 import org.oddlama.vane.core.module.Context
 import org.oddlama.vane.trifles.Trifles
 import org.oddlama.vane.trifles.event.PlayerTeleportScrollEvent
-import org.oddlama.vane.util.msToTicks
 import org.oddlama.vane.util.ItemUtil
 import org.oddlama.vane.util.PlayerUtil
 import org.oddlama.vane.util.StorageUtil
+import org.oddlama.vane.util.msToTicks
 
 /**
  * Registers concrete scroll items and handles shared scroll interaction behavior.

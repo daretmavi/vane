@@ -7,7 +7,7 @@ import de.bluecolored.bluemap.api.markers.MarkerSet
 import org.bukkit.OfflinePlayer
 import org.bukkit.World
 import org.oddlama.vane.external.apache.commons.text.StringEscapeUtils
-import java.util.UUID
+import java.util.*
 
 /**
  * Handles BlueMap API integration and bedtime marker synchronization.

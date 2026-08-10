@@ -6,7 +6,7 @@ import org.json.JSONObject
 import org.oddlama.vane.core.persistent.PersistentSerializer
 import org.oddlama.vane.util.StorageUtil
 import java.io.IOException
-import java.util.EnumMap
+import java.util.*
 
 /**
  * Portal style definition mapping block types to active and inactive materials.

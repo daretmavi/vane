@@ -34,6 +34,7 @@ class VaneGeyser : Extension {
         logger().info("##############################################")
         logger().info("")
     }
+
     /**
      * Handles the [GeyserDefineResourcePacksEvent] to log resource pack loading.
      *
@@ -45,6 +46,7 @@ class VaneGeyser : Extension {
     fun onGeyserDefineResourcePacksEvent(event: GeyserDefineResourcePacksEvent) {
         logger().info("Loading: ${event.resourcePacks().size} resource packs.")
     }
+
     /**
      * Handles the [GeyserPostInitializeEvent] fired after Geyser is fully initialized.
      *
@@ -58,6 +60,7 @@ class VaneGeyser : Extension {
             info("${dataFolder()}")
         }
     }
+
     /**
      * Handles the [GeyserPreInitializeEvent] to support extension reloading.
      *

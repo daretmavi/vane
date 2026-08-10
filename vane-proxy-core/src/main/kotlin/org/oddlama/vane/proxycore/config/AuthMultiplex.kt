@@ -1,6 +1,6 @@
 package org.oddlama.vane.proxycore.config
 
-import java.util.UUID
+import java.util.*
 
 /**
  * Configuration for an authentication multiplexer endpoint.

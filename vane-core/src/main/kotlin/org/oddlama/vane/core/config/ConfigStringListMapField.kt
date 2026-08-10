@@ -4,7 +4,7 @@ import org.bukkit.configuration.file.YamlConfiguration
 import org.oddlama.vane.annotation.config.ConfigStringListMap
 import org.oddlama.vane.core.YamlLoadException
 import java.lang.reflect.Field
-import java.util.Locale
+import java.util.*
 
 /**
  * Config field handler for mappings of string keys to string lists.

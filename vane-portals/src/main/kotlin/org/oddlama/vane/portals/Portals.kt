@@ -354,7 +354,10 @@ class Portals : Module<Portals?>() {
      * @return true when the player is allowed to use portals in that group
      */
     fun playerCanUsePortalsInRegionGroupOf(player: Player?, portal: Portal?): Boolean {
-        return playerCanUsePortalsInRegionGroupOfCallback == null || playerCanUsePortalsInRegionGroupOfCallback!!.apply(player, portal)!!
+        return playerCanUsePortalsInRegionGroupOfCallback == null || playerCanUsePortalsInRegionGroupOfCallback!!.apply(
+            player,
+            portal
+        )!!
     }
 
     /** True when regions integration callbacks are available. */

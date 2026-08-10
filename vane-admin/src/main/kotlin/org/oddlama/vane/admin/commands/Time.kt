@@ -10,11 +10,11 @@ import org.bukkit.World
 import org.bukkit.entity.Player
 import org.oddlama.vane.admin.Admin
 import org.oddlama.vane.annotation.command.Name
-import org.oddlama.vane.core.command.Command as VaneCommand
 import org.oddlama.vane.core.command.argumentType.TimeValueArgumentType
 import org.oddlama.vane.core.command.enums.TimeValue
 import org.oddlama.vane.core.module.Context
 import org.oddlama.vane.util.WorldUtil
+import org.oddlama.vane.core.command.Command as VaneCommand
 
 /**
  * Command for changing the world time smoothly.

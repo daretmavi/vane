@@ -12,7 +12,6 @@ import org.oddlama.vane.core.Listener
 import org.oddlama.vane.core.module.Context
 import org.oddlama.vane.util.Nms
 import org.oddlama.vane.util.msToTicks
-import kotlin.comparisons.compareValues
 import kotlin.math.exp
 import kotlin.math.max
 

@@ -4,7 +4,7 @@ import org.oddlama.vane.proxycore.Maintenance
 import org.oddlama.vane.proxycore.ProxyPlayer
 import org.oddlama.vane.proxycore.VaneProxyPlugin
 import org.oddlama.vane.proxycore.util.parseTime
-import java.util.Locale
+import java.util.*
 
 /**
  * Command handler for querying and controlling maintenance mode.

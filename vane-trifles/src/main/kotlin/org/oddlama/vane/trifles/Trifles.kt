@@ -9,7 +9,7 @@ import org.oddlama.vane.trifles.commands.Setspawn
 import org.oddlama.vane.trifles.items.*
 import org.oddlama.vane.trifles.items.storage.Backpack
 import org.oddlama.vane.trifles.items.storage.Pouch
-import java.util.UUID
+import java.util.*
 
 @VaneModule(name = "trifles", bstats = 8644, configVersion = 4, langVersion = 4, storageVersion = 1)
 /**

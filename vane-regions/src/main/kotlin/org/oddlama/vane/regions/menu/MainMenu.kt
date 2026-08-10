@@ -6,16 +6,16 @@ import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 import org.oddlama.vane.annotation.lang.LangMessage
 import org.oddlama.vane.core.config.TranslatedItemStack
-import org.oddlama.vane.core.lang.TranslatedMessage
-import org.oddlama.vane.core.menu.*
 import org.oddlama.vane.core.functional.Function2
 import org.oddlama.vane.core.functional.Function3
-import org.oddlama.vane.regions.region.Region
-import org.oddlama.vane.regions.region.RegionSelection
-import org.oddlama.vane.regions.region.RegionGroup
+import org.oddlama.vane.core.lang.TranslatedMessage
+import org.oddlama.vane.core.menu.*
 import org.oddlama.vane.core.module.Context
 import org.oddlama.vane.core.module.ModuleComponent
 import org.oddlama.vane.regions.Regions
+import org.oddlama.vane.regions.region.Region
+import org.oddlama.vane.regions.region.RegionGroup
+import org.oddlama.vane.regions.region.RegionSelection
 import java.util.stream.Collectors
 import kotlin.math.abs
 

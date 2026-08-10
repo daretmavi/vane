@@ -11,10 +11,10 @@ import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 import org.oddlama.vane.admin.Admin
 import org.oddlama.vane.annotation.command.Name
-import org.oddlama.vane.core.command.Command as VaneCommand
 import org.oddlama.vane.core.command.argumentType.WeatherArgumentType
 import org.oddlama.vane.core.command.enums.WeatherValue
 import org.oddlama.vane.core.module.Context
+import org.oddlama.vane.core.command.Command as VaneCommand
 
 /**
  * Command for changing weather in the current or a selected world.

@@ -17,8 +17,8 @@ import org.oddlama.vane.core.item.CustomItemHelper
 import org.oddlama.vane.core.item.api.InhibitBehavior
 import org.oddlama.vane.core.module.Context
 import org.oddlama.vane.trifles.Trifles
-import org.oddlama.vane.util.expForLevel
 import org.oddlama.vane.util.PlayerUtil
+import org.oddlama.vane.util.expForLevel
 import java.util.*
 
 /**

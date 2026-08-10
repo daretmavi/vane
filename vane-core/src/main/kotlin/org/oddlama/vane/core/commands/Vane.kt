@@ -15,7 +15,7 @@ import org.oddlama.vane.core.command.argumentType.ModuleArgumentType
 import org.oddlama.vane.core.lang.TranslatedMessage
 import org.oddlama.vane.core.module.Context
 import org.oddlama.vane.core.module.Module
-import java.util.Random
+import java.util.*
 
 /**
  * Core administrative command for vane reload and resource-pack operations.

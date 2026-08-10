@@ -5,7 +5,7 @@ import com.velocitypowered.api.proxy.Player
 import org.oddlama.vane.proxycore.ProxyPendingConnection
 import org.oddlama.vane.proxycore.ProxyServer
 import java.net.SocketAddress
-import java.util.UUID
+import java.util.*
 
 /**
  * Velocity implementation of proxy-core pending connection abstraction.

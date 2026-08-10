@@ -1,7 +1,7 @@
 package org.oddlama.vane.proxycore
 
 import org.oddlama.vane.proxycore.commands.ProxyCommandSender
-import java.util.UUID
+import java.util.*
 
 /**
  * Represents a connected player on the proxy.

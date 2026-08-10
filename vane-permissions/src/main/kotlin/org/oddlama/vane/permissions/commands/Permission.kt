@@ -16,7 +16,7 @@ import org.oddlama.vane.core.lang.TranslatedMessage
 import org.oddlama.vane.core.module.Context
 import org.oddlama.vane.permissions.Permissions
 import org.oddlama.vane.permissions.argumentTypes.PermissionGroupArgumentType
-import java.util.Locale
+import java.util.*
 
 @Name("permission")
 @Aliases("perm")

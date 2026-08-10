@@ -6,6 +6,8 @@ import org.geysermc.geyser.api.command.Command
 import org.geysermc.geyser.api.connection.GeyserConnection
 import org.geysermc.geyser.api.event.lifecycle.GeyserDefineCommandsEvent
 import org.geysermc.geyser.api.extension.Extension
+import org.oddlama.vane.geyserextension.CommandsRegistration.sendEnchantMenu
+import org.oddlama.vane.geyserextension.CommandsRegistration.sendVaneMenu
 
 /**
  * Registers Bedrock-specific commands and provides form-based UI menus for Geyser connections.
@@ -177,11 +179,11 @@ object CommandsRegistration {
     private fun sendPermAddPlayerGroupForm(connection: GeyserConnection) {
         val form = SimpleForm.builder().title("Add Player to Group")
         val players = getOnlinePlayerNames()
-            
+
         players.forEach { form.button(it) }
         form.button("Not connected")
         form.button("Back")
-        
+
         form.validResultHandler { response ->
             val id = response.clickedButtonId()
             if (id == players.size + 1) {
@@ -206,11 +208,11 @@ object CommandsRegistration {
     private fun sendPermRemovePlayerGroupForm(connection: GeyserConnection) {
         val form = SimpleForm.builder().title("Remove Player from Group")
         val players = getOnlinePlayerNames()
-            
+
         players.forEach { form.button(it) }
         form.button("Not connected")
         form.button("Back")
-        
+
         form.validResultHandler { response ->
             val id = response.clickedButtonId()
             if (id == players.size + 1) {
@@ -281,11 +283,11 @@ object CommandsRegistration {
     private fun sendPermVouchForm(connection: GeyserConnection) {
         val form = SimpleForm.builder().title("Vouch for Player")
         val players = getOnlinePlayerNames()
-            
+
         players.forEach { form.button(it) }
         form.button("Not connected")
         form.button("Back")
-        
+
         form.validResultHandler { response ->
             val id = response.clickedButtonId()
             if (id == players.size + 1) {
@@ -780,7 +782,10 @@ object CommandsRegistration {
         val item = getPlayerItemInHand(connection) ?: ""
         val isElytra = item.contains("elytra")
         val isFishingRod = item.contains("fishing_rod")
-        val isHelmet = item.contains("helmet") || item.contains("skull") || item.contains("head") || item.contains("turtle_shell") || item.contains("pumpkin")
+        val isHelmet =
+            item.contains("helmet") || item.contains("skull") || item.contains("head") || item.contains("turtle_shell") || item.contains(
+                "pumpkin"
+            )
         val isBoots = item.contains("boots")
         val isLeggings = item.contains("leggings")
         val isChestplate = item.contains("chestplate") && !isElytra
@@ -796,8 +801,13 @@ object CommandsRegistration {
         val isBow = item.contains("bow") && !item.contains("crossbow")
         val isCrossbow = item.contains("crossbow")
         val isMace = item.contains("mace")
-        
-        val hasDurability = isSword || isTool || isArmor || isElytra || isFishingRod || isTrident || isBow || isCrossbow || isMace || isShears || item.contains("shield") || item.contains("flint_and_steel") || item.contains("carrot_on_a_stick") || item.contains("warped_fungus_on_a_stick") || item.contains("brush")
+
+        val hasDurability =
+            isSword || isTool || isArmor || isElytra || isFishingRod || isTrident || isBow || isCrossbow || isMace || isShears || item.contains(
+                "shield"
+            ) || item.contains("flint_and_steel") || item.contains("carrot_on_a_stick") || item.contains("warped_fungus_on_a_stick") || item.contains(
+                "brush"
+            )
 
         val availableEnchants = mutableListOf<String>()
 
@@ -904,12 +914,59 @@ object CommandsRegistration {
 
         if (item.isEmpty() || item.contains("air")) {
             val allEnchants = listOf(
-                "vane_enchantments:angel", "vane_enchantments:grappling_hook", "vane_enchantments:hell_bent", "vane_enchantments:leafchopper", "vane_enchantments:lightning", "vane_enchantments:rake", "vane_enchantments:seeding", "vane_enchantments:soulbound", "vane_enchantments:take_off", "vane_enchantments:unbreakable", "vane_enchantments:wings",
-                "protection", "fire_protection", "feather_falling", "blast_protection", "projectile_protection", "respiration", "aqua_affinity",
-                "thorns", "depth_strider", "frost_walker", "binding_curse", "sharpness", "smite", "bane_of_arthropods", "knockback", "fire_aspect",
-                "looting", "sweeping_edge", "efficiency", "silk_touch", "unbreaking", "fortune", "power", "punch", "flame", "infinity",
-                "luck_of_the_sea", "lure", "loyalty", "impaling", "riptide", "channeling", "multishot", "piercing", "quick_charge",
-                "mending", "vanishing_curse", "soul_speed", "swift_sneak", "density", "breach", "wind_burst"
+                "vane_enchantments:angel",
+                "vane_enchantments:grappling_hook",
+                "vane_enchantments:hell_bent",
+                "vane_enchantments:leafchopper",
+                "vane_enchantments:lightning",
+                "vane_enchantments:rake",
+                "vane_enchantments:seeding",
+                "vane_enchantments:soulbound",
+                "vane_enchantments:take_off",
+                "vane_enchantments:unbreakable",
+                "vane_enchantments:wings",
+                "protection",
+                "fire_protection",
+                "feather_falling",
+                "blast_protection",
+                "projectile_protection",
+                "respiration",
+                "aqua_affinity",
+                "thorns",
+                "depth_strider",
+                "frost_walker",
+                "binding_curse",
+                "sharpness",
+                "smite",
+                "bane_of_arthropods",
+                "knockback",
+                "fire_aspect",
+                "looting",
+                "sweeping_edge",
+                "efficiency",
+                "silk_touch",
+                "unbreaking",
+                "fortune",
+                "power",
+                "punch",
+                "flame",
+                "infinity",
+                "luck_of_the_sea",
+                "lure",
+                "loyalty",
+                "impaling",
+                "riptide",
+                "channeling",
+                "multishot",
+                "piercing",
+                "quick_charge",
+                "mending",
+                "vanishing_curse",
+                "soul_speed",
+                "swift_sneak",
+                "density",
+                "breach",
+                "wind_burst"
             )
             availableEnchants.addAll(allEnchants)
         }
@@ -949,13 +1006,15 @@ object CommandsRegistration {
      */
     private fun sendEnchantLevelMenu(connection: GeyserConnection, enchant: String, maxLevel: Int) {
         val form = SimpleForm.builder()
-            .title("Level: " + enchant.substringAfter(":").split("_").joinToString(" ") { it.replaceFirstChar { c -> c.uppercase() } })
-            
+            .title(
+                "Level: " + enchant.substringAfter(":").split("_")
+                    .joinToString(" ") { it.replaceFirstChar { c -> c.uppercase() } })
+
         for (i in 1..maxLevel) {
             form.button("Level $i")
         }
         form.button("Back")
-        
+
         form.validResultHandler { response ->
             val id = response.clickedButtonId()
             if (id == maxLevel) {

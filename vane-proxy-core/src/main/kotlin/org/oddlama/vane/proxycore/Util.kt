@@ -1,6 +1,6 @@
 package org.oddlama.vane.proxycore
 
-import java.util.UUID
+import java.util.*
 
 /**
  * Utility helpers used by proxy-core.

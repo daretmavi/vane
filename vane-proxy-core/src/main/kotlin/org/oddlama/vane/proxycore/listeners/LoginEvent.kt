@@ -5,7 +5,7 @@ import org.oddlama.vane.proxycore.ProxyPendingConnection
 import org.oddlama.vane.proxycore.VaneProxyPlugin
 import org.oddlama.vane.proxycore.config.IVaneProxyServerInfo
 import org.oddlama.vane.proxycore.config.ManagedServer
-import java.util.UUID
+import java.util.*
 import java.util.logging.Level
 
 /**

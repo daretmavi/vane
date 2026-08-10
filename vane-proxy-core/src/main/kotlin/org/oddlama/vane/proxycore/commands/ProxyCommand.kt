@@ -1,7 +1,7 @@
 package org.oddlama.vane.proxycore.commands
 
 import org.oddlama.vane.proxycore.VaneProxyPlugin
-import java.util.UUID
+import java.util.*
 
 /**
  * Base abstraction for proxy commands.

@@ -1,7 +1,7 @@
 package org.oddlama.vane.proxycore
 
 import org.oddlama.vane.proxycore.scheduler.ProxyTaskScheduler
-import java.util.UUID
+import java.util.*
 
 /**
  * Abstraction of a proxy runtime used by [VaneProxyPlugin].

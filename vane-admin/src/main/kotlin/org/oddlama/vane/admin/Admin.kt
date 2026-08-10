@@ -1,10 +1,6 @@
 package org.oddlama.vane.admin
 
-import org.oddlama.vane.admin.commands.Autostop
-import org.oddlama.vane.admin.commands.Gamemode
-import org.oddlama.vane.admin.commands.SlimeChunk
-import org.oddlama.vane.admin.commands.Time
-import org.oddlama.vane.admin.commands.Weather
+import org.oddlama.vane.admin.commands.*
 import org.oddlama.vane.annotation.VaneModule
 import org.oddlama.vane.core.module.Module
 

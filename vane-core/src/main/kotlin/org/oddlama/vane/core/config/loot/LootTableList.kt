@@ -1,7 +1,7 @@
 package org.oddlama.vane.core.config.loot
 
 import org.oddlama.vane.core.config.ConfigDictSerializable
-import java.util.Locale
+import java.util.*
 
 /**
  * Config-serializable list wrapper for [LootDefinition] entries.

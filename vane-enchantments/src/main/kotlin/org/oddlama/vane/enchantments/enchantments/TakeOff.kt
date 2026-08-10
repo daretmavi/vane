@@ -1,13 +1,14 @@
 package org.oddlama.vane.enchantments.enchantments
 
 import org.bukkit.Material
+import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.entity.EntityToggleGlideEvent
 import org.bukkit.loot.LootTables
+import org.oddlama.vane.annotation.config.ConfigDoubleList
 import org.oddlama.vane.annotation.enchantment.Rarity
 import org.oddlama.vane.annotation.enchantment.VaneEnchantment
-import org.oddlama.vane.annotation.config.ConfigDoubleList
 import org.oddlama.vane.core.config.loot.LootDefinition
 import org.oddlama.vane.core.config.loot.LootTableList
 import org.oddlama.vane.core.config.recipes.RecipeList
@@ -17,7 +18,6 @@ import org.oddlama.vane.core.module.Context
 import org.oddlama.vane.enchantments.Enchantments
 import org.oddlama.vane.util.ItemUtil
 import org.oddlama.vane.util.PlayerUtil
-import org.bukkit.entity.Player
 
 /**
  * TakeOff is a custom enchantment that provides a boost to players when they use

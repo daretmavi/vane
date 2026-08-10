@@ -12,8 +12,8 @@
 
 # About vane
 
-Vane is a plugin-suite that provides many immersive and lore-friendly additions to vanilla minecraft.
-It will run on any [PaperMC](https://papermc.io) based minecraft server.
+Vane is a plugin-suite that provides many immersive and lore-friendly additions to vanilla minecraft. It will run on
+any [PaperMC](https://papermc.io) based minecraft server.
 
 [**For a comprehensive feature overview, visit the official website.**](https://oddlama.github.io/vane/)
 
@@ -31,8 +31,8 @@ It will run on any [PaperMC](https://papermc.io) based minecraft server.
 
 ## 📷 Gallery
 
-Visit the [**Gallery on Modrinth**](https://modrinth.com/mod/vane/gallery) to view a selection of features or 
-refer to [**the official website**](https://oddlama.github.io/vane/) for a complete overview.
+Visit the [**Gallery on Modrinth**](https://modrinth.com/mod/vane/gallery) to view a selection of features or refer to [
+**the official website**](https://oddlama.github.io/vane/) for a complete overview.
 
 <p style="float: left;">
 <img width="32%" height="auto" src="https://cdn.modrinth.com/data/698NGGtb/images/29f9caecbf0ae1a5ae7968c9700183332b4b7c42.gif" alt="Vane feature demonstration - custom portal">
@@ -49,25 +49,31 @@ refer to [**the official website**](https://oddlama.github.io/vane/) for a compl
 
 ## 📥 Installation
 
-<sup><sub>If you are setting up a new server, check out our [Server Installer](https://oddlama.github.io/minecraft-server)
-for an easy way to properly set up a minecraft server with vane, autostart, 3D online map, and more awesome features.</sub></sup>
+<sup><sub>If you are setting up a new server, check out
+our [Server Installer](https://oddlama.github.io/minecraft-server)
+for an easy way to properly set up a minecraft server with vane, autostart, 3D online map, and more awesome
+features.</sub></sup>
 
-Download all desired jars files from the [Releases](https://github.com/oddlama/vane/releases/latest) and put them into the `plugins/` directory.
-Grab the `all-plugins.zip` if you don't want to download each file by hand. You can also download vane from [Modrinth](https://modrinth.com/plugin/vane). Make sure that:
+Download all desired jars files from the [Releases](https://github.com/oddlama/vane/releases/latest) and put them into
+the `plugins/` directory. Grab the `all-plugins.zip` if you don't want to download each file by hand. You can also
+download vane from [Modrinth](https://modrinth.com/plugin/vane). Make sure that:
 
-- You are using the correct Paper (or Purpur) server version (compatible versions are listed in the title on the download page)
-- Beware that `vane-velocity` and `vane-plexmap` (plexmap addon) are not classical server plugins! Use them only if you know what you are doing.
+- You are using the correct Paper (or Purpur) server version (compatible versions are listed in the title on the
+  download page)
+- Beware that `vane-velocity` and `vane-plexmap` (plexmap addon) are not classical server plugins! Use them only if you
+  know what you are doing.
 
-For a comprehensive guide, visit the [Installation Guide](https://github.com/oddlama/vane/wiki/Installation-Guide) on the wiki.
+For a comprehensive guide, visit the [Installation Guide](https://github.com/oddlama/vane/wiki/Installation-Guide) on
+the wiki.
 
 ## Proxy Installation (vane-velocity)
 
-Download `vane-velocity.jar` and place it in the velocity proxy server's `plugins/` directory. The configuration will be generated on first start.
-All configuration is handled in the plugin's `config.toml`.
+Download `vane-velocity.jar` and place it in the velocity proxy server's `plugins/` directory. The configuration will be
+generated on first start. All configuration is handled in the plugin's `config.toml`.
 
-There are permissions players will need to perform certain actions, such as starting offline
-servers and joining servers in maintenance mode. Permissions can be handled by any external
-permissions plugin, such as [LuckPerms](https://luckperms.net).
+There are permissions players will need to perform certain actions, such as starting offline servers and joining servers
+in maintenance mode. Permissions can be handled by any external permissions plugin, such
+as [LuckPerms](https://luckperms.net).
 
 ## Building from source
 
@@ -76,8 +82,8 @@ You can, of course, build the plugin yourself. To do that, you need at least JDK
 1. Execute `./gradlew build --no-daemon --warning-mode all`
 2. All resulting jar files that can be used on a server will be in `target/`.
 
-If you experience "peer not authenticated" issues from Gradle, just retry.
-Seems to be a skittish integration between Gradle and Maven repositories.
+If you experience "peer not authenticated" issues from Gradle, just retry. Seems to be a skittish integration between
+Gradle and Maven repositories.
 
 ## FAQ
 
@@ -91,7 +97,8 @@ I would like to thank the following projects and people maintaining them:
 - [PaperMC](https://papermc.io/) for the valuable additions missing from Spigot.
 - [PacketEvents](https://github.com/retrooper/packetevents) for the awesome packet manipulation library
 - [DynmapCoreAPI](https://github.com/webbukkit/DynmapCoreAPI) (Apache-2.0), dynmap integration
-- [BlueMapAPI](https://github.com/BlueMap-Minecraft/BlueMapAPI) (MIT), [BlueMap](https://bluemap.bluecolored.de/) integration
+- [BlueMapAPI](https://github.com/BlueMap-Minecraft/BlueMapAPI) (MIT), [BlueMap](https://bluemap.bluecolored.de/)
+  integration
 - [Quark](https://quarkmod.net) (CC-BY-NC-SA 3.0) Assets and texts for the Slime Bucket
 
 #### Included software
@@ -99,7 +106,8 @@ I would like to thank the following projects and people maintaining them:
 The following projects will be included in the compilation step:
 
 - [org.json](https://github.com/stleary/JSON-java) (MIT), Java json implementation
-- [night-config](https://github.com/TheElectronWill/night-config) (LGPL3), Java configuration library, TOML implementation used
+- [night-config](https://github.com/TheElectronWill/night-config) (LGPL3), Java configuration library, TOML
+  implementation used
 - [ronmamo reflections](https://github.com/ronmamo/reflections) (WTFPL), Java reflection helper
 - [PacketWrapper](https://github.com/dmulloy2/PacketWrapper) (LGPL3), only specific parts are included
 - [bStats](https://bstats.org/) (LGPL3), plugin metrics
