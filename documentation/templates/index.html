@@ -3,7 +3,7 @@
 <head>
     <title>Vane – Minecraft Plugin Suite</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="oddlama">
     <link rel="stylesheet" href="css/style.css">
@@ -40,7 +40,7 @@
         </div>
     </div>
 </nav>
-<div class="mx-auto max-w-screen-lg px-3">
+<div class="mx-auto max-w-5xl px-3">
     <section class="my-8 pb-3">
         <div class="px-4 text-center lg:px-12">
             <div class="mb-4 inline-flex justify-center items-center">
@@ -100,8 +100,8 @@
 <div id="the-mctooltip"></div>
 </body>
 <script>
-    var themeToggleDarkIcon = document.getElementById("theme-toggle-dark-icon");
-    var themeToggleLightIcon = document.getElementById("theme-toggle-light-icon");
+    const themeToggleDarkIcon = document.getElementById("theme-toggle-dark-icon");
+    const themeToggleLightIcon = document.getElementById("theme-toggle-light-icon");
 
     // Change the icons inside the button based on previous settings
     if (localStorage.getItem("color-theme") === "dark" || (!("color-theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
@@ -110,7 +110,7 @@
         themeToggleDarkIcon.classList.remove("hidden");
     }
 
-    var themeToggleBtn = document.getElementById("theme-toggle");
+    const themeToggleBtn = document.getElementById("theme-toggle");
 
     themeToggleBtn.addEventListener("click", function() {
 
@@ -150,8 +150,8 @@
 <script>
     function accordionSetState(el, state) {
         el.setAttribute("aria-expanded", state ? "true" : "false");
-        var target = document.getElementById(el.getAttribute("aria-controls"));
-        var iconEl = el.querySelector("[data-accordion-icon]");
+        const target = document.getElementById(el.getAttribute("aria-controls"));
+        const iconEl = el.querySelector("[data-accordion-icon]");
         if (state) {
             target.classList.remove("hidden");
             if (iconEl) {
@@ -165,8 +165,8 @@
         }
     }
 
-    var state = false;
-    var expand_collapse_btn = document.getElementById("expand-collapse-all");
+    let state = false;
+    const expand_collapse_btn = document.getElementById("expand-collapse-all");
     expand_collapse_btn.addEventListener("click", function() {
         state = !state;
         Array.prototype.forEach.call(document.getElementsByClassName("feature-toggle"), el => accordionSetState(el, state));
@@ -176,15 +176,30 @@
     document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll("[aria-controls]").forEach(el => {
             el.addEventListener("click", function() {
-                var active = el.getAttribute("aria-expanded") === "true" ? true : false;
+                const active = el.getAttribute("aria-expanded") === "true";
                 accordionSetState(el, !active);
             });
         });
     });
 </script>
 <script>
-    var minecraft_tooltip = document.getElementById("the-mctooltip");
+    const minecraft_tooltip = document.getElementById("the-mctooltip");
 
+    const pos = function(o, x, y, event) {
+        const posX = event.pageX;
+        const posY = event.pageY;
+        o.style.position = "absolute";
+        o.style.top = (posY + y) + "px";
+        if (event.clientX <= document.documentElement.clientWidth / 2) {
+            o.style.left = (posX + x) + "px";
+            o.style.removeProperty("right");
+            o.style.maxWidth = (document.documentElement.clientWidth - (event.clientX + x) - 16) + "px";
+        } else {
+            o.style.removeProperty("left");
+            o.style.right = (document.documentElement.scrollLeft + document.documentElement.clientWidth) - (posX - x) + "px";
+            o.style.maxWidth = ((event.clientX - x) - 16) + "px";
+        }
+    };
     Array.prototype.forEach.call(document.getElementsByClassName("mctooltip"), el => {
         el.onmouseover = function(event) {
             minecraft_tooltip.innerHTML = event.target.dataset.mctooltip;
@@ -200,28 +215,6 @@
         };
     });
 
-    var pos = function(o, x, y, event) {
-        var posX = 0, posY = 0;
-        var e = event || window.event;
-        if (e.pageX || e.pageY) {
-            posX = e.pageX;
-            posY = e.pageY;
-        } else if (e.clientX || e.clientY) {
-            posX = event.clientX + document.documentElement.scrollLeft + document.body.scrollLeft;
-            posY = event.clientY + document.documentElement.scrollTop + document.body.scrollTop;
-        }
-        o.style.position = "absolute";
-        o.style.top = (posY + y) + "px";
-        if (event.clientX <= document.documentElement.clientWidth / 2) {
-            o.style.left = (posX + x) + "px";
-            o.style.removeProperty("right");
-            o.style.maxWidth = (document.documentElement.clientWidth - (event.clientX + x) - 16) + "px";
-        } else {
-            o.style.removeProperty("left");
-            o.style.right = (document.documentElement.scrollLeft + document.documentElement.clientWidth) - (posX - x) + "px";
-            o.style.maxWidth = ((event.clientX - x) - 16) + "px";
-        }
-    };
 
     minecraft_tooltip.style.display = "none";
 </script>
