@@ -31,7 +31,7 @@ jobs:
       - name: Gradle build
         run: |
           cd vane-${{ matrix.project }}
-          gradle build
+          ../gradlew build
           # Get the Git hash
           git_hash=$(git rev-parse --short "$GITHUB_SHA")
           echo "git_hash=$git_hash" >> $GITHUB_ENV
