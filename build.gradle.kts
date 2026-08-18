@@ -98,6 +98,7 @@ subprojects {
         maven("https://jitpack.io")
         maven("https://api.modrinth.com/maven")
         maven("https://repo.bluecolored.de/releases")
+        maven("https://repo.thenextlvl.net/releases")
     }
 
     tasks.withType<JavaCompile> {

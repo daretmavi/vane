@@ -237,16 +237,16 @@ class Regions : Module<Regions?>() {
     private fun setupEconomy(): Boolean {
         module!!.log.info("Enabling economy integration")
 
-        val vaultApiPlugin: Plugin? = module!!.server.pluginManager.getPlugin("Vault")
-        if (vaultApiPlugin == null) {
+        val serviceIoPlugin: Plugin? = module!!.server.pluginManager.getPlugin("ServiceIO")
+        if (serviceIoPlugin == null) {
             module!!.log.severe(
-                "Economy was selected as the currency provider, but the Vault plugin wasn't found! Falling back to material currency."
+                "Economy was selected as the currency provider, but the ServiceIO plugin wasn't found! Falling back to material currency."
             )
             return false
         }
 
         economy = RegionEconomyDelegate(this)
-        return economy!!.setup(vaultApiPlugin)
+        return economy!!.setup(serviceIoPlugin)
     }
 
     /**
@@ -504,8 +504,8 @@ class Regions : Module<Regions?>() {
         val price = selection.price()
         if (configEconomyAsCurrency) {
             if (price > 0) {
-                val transaction = economy!!.withdraw(player, price)
-                if (!transaction.transactionSuccess()) {
+                val success = economy!!.withdraw(player, price)
+                if (!success) {
                     log.warning(
                         "Player " +
                                 player +
@@ -513,9 +513,8 @@ class Regions : Module<Regions?>() {
                                 name +
                                 "' (cost " +
                                 price +
-                                ") but the economy plugin failed to withdraw:"
+                                ") but the economy plugin failed to withdraw."
                     )
-                    log.warning("Error message: " + transaction.errorMessage)
                     return false
                 }
             }

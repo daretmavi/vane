@@ -7,7 +7,7 @@ plugins {
 dependencies {
     implementation(project(":vane-portals"))
     compileOnly(project(":vane-core"))
-    compileOnly(libs.vault)
+    compileOnly(libs.serviceIo)
     compileOnly(libs.json)
     implementation(kotlin("stdlib"))
     testImplementation(kotlin("test"))

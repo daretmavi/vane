@@ -195,8 +195,8 @@ class RegionMenu(context: Context<Regions?>) : ModuleComponent<Regions?>(context
 
                     val price = tempSel.price()
                     if (module!!.configEconomyAsCurrency) {
-                        val transaction = module!!.economy?.deposit(player2, price)
-                        if (transaction == null || !transaction.transactionSuccess()) {
+                        val success = module!!.economy?.deposit(player2, price) ?: false
+                        if (!success) {
                             module!!.log.severe(
                                 "Player " +
                                         player2 +
@@ -204,13 +204,8 @@ class RegionMenu(context: Context<Regions?>) : ModuleComponent<Regions?>(context
                                         region.name() +
                                         "' (cost " +
                                         price +
-                                        ") but the economy plugin failed to deposit:"
+                                        ") but the economy plugin failed to deposit."
                             )
-                            if (transaction != null) {
-                                module!!.log.severe("Error message: " + transaction.errorMessage)
-                            } else {
-                                module!!.log.severe("Economy deposit returned null")
-                            }
                         }
                     } else {
                         val currency = module!!.configCurrency ?: Material.DIAMOND
